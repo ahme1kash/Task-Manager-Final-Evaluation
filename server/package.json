@@ -1,0 +1,35 @@
+{
+  "name": "task-manager-backend-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "FULL STACK TASK MANAGER APPLICATION",
+    "MONGO DB",
+    "REACT.JS",
+    "NODE.JS",
+    "MERN STACK TASK MANAGER",
+    "APIs",
+    "CUVETTE FINAL EVALUATION TEST"
+  ],
+  "author": "KASHIF AHMED QURESHI",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.3",
+    "morgan": "^1.10.0",
+    "validator": "^13.12.0"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0"
+  }
+}
