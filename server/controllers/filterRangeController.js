@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const taskModel = require("../models/taskModel");
-// All Queries for as per MONGO server Time which trails by GMT- 5:30
+// All Queries match filter criteria as per MONGO server Time which trails by GMT- 5:30 as per Indian Standard Time (IST)
 const filterController = async (req, res) => {
     try {
         const user_id = req.body.id;
