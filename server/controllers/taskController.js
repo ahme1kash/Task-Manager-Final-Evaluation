@@ -106,8 +106,10 @@ const updateTaskController = async (req, res) => {
 };
 const readTaskController = async (req, res) => {
     try {
+        // Matching both the task_id and user_id , however only task_id can do the work
         const task_id = req.params.task_id
-        const tasks = await taskModel.findById(task_id);
+        const user_id = req.body.id
+        const tasks = await taskModel.find({ _id: task_id, user_id: user_id })
         if (!tasks) {
             return res.status(404).send({
                 success: false,

@@ -15,6 +15,7 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }))
 
 // Routes
+app.use("/api/share", require("./routes/shareRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api/tasks", require("./routes/taskRoutes"));
