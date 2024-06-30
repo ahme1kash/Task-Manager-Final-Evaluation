@@ -17,6 +17,9 @@ app.use(express.urlencoded({ extended: true }))
 // Routes
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
+app.use("/api/tasks", require("./routes/taskRoutes"));
+app.use("/api/count", require("./routes/countRoutes"));
+app.use("/api/search", require("./routes/filterRangeRoutes"));
 
 app.listen(PORT, async () => {
     if (await connect()) {

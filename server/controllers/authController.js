@@ -108,6 +108,7 @@ const logoutController = async (req, res) => {
                 });
             } else {
                 tokenBlacklist.push(token);
+                console.log(tokenBlacklist)
 
                 return res.status(200).send({
                     success: true,
