@@ -12,7 +12,7 @@ const router = express.Router();
 //Register || POSt
 router.post("/createTask", getUserMiddleware, createTaskController);
 router.put("/updateTask/:task_id", getUserMiddleware, updateTaskController);
-router.get("/readTask/:task_id", getUserMiddleware, readTaskController);
+router.get("/readTask", getUserMiddleware, readTaskController);
 router.delete("/deleteTask/:task_id", getUserMiddleware, deleteTaskController);
 router.put("/updateTaskStatus/:task_id", getUserMiddleware, updateTaskStatusController);
 module.exports = router;

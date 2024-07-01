@@ -1,35 +1,49 @@
 // Get USER Info
 const mongoose = require("mongoose")
 const taskModel = require("../models/taskModel");
+const userModel = require("../models/userModel");
 const createTaskController = async (req, res) => {
     try {
-        const user_id = req.body.id
+        const user_id = req.body.id;
+        const assignor_id = req.body.id;  //By default assignor_id set to user_id 
+        let assigned_to_email;
+        // finding user_email below
+        const user = await userModel.findById(user_id)
+        // Assigning the email to user_email who is creating the task.
+        const user_email = user.email
+        // const assignor = user.email
+        // By default assigning task to creator of task if he does not assigns the task to someone.
+        assigned_to_email = req.body.assigned_to_email?.valueOf();
+        if (assigned_to_email == undefined) {
+            assigned_to_email = user.email
+        }
+        else {
+            assigned_to_email = req.body.assigned_to_email
+        }
+
         const {
             task_title,
             task_priority,
             task_steps,
-            assigned_status,
-            assigned_to_id,
-            assigned_to_email,
-            due_date,
+            due_date
+
         } = req.body;
-        console.log(req.body)
+        // Must to add fields
         if (!user_id || !task_title || !task_priority || !task_steps) {
             return res.status(400).send({
                 success: false,
                 message: "Some Task Fields are missing. Failed to Add new Task"
             })
         }
-
         const task = await taskModel.create({
             user_id,
             task_title,
             task_priority,
+            user_email,
             task_steps,
-            assigned_status,
-            assigned_to_id,
             assigned_to_email,
             due_date,
+            assignor_id
         });
         return res.status(201).send({
             success: true,
@@ -72,20 +86,30 @@ const updateTaskStatusController = async (req, res) => {
 };
 const updateTaskController = async (req, res) => {
     try {
+        const user_id = req.body.id;
         const task_id = req.params.task_id
+        const user = await userModel.findById(user_id)
+        // Assigning the email to user_email who is updating the task.
+        const user_email = user.email
         const original_task = await taskModel.findById(task_id)
-        console.log("original_task", original_task)
-        // console.log(req.body.id, req.body.task_title, req.body.due_date, req.body.task_priority, req.body.task_steps, req.body.assigned_status, req.body.assigned_to_id, req.body.assigned_to_email)
+        const assigned_to_email = req.body.assigned_to_email ? req.body.assigned_to_email : original_task.assigned_to_email
+        const assignor_id = original_task.assignor_id.toString();// will be constant and will point to creator of task
+        // console.log(assignor_id, user_id, user_email, assigned_to_email)
         const new_task = {
             user_id: req.body.id,
             task_title: req.body.task_title,
             task_priority: req.body.task_priority,
             task_steps: req.body.task_steps,
-            // Optional fields
-            assigned_status: req.body.assigned_status && req.body.assigned_status,
-            assigned_to_id: req.body.assigned_to_id && req.body.assigned_to_id,
-            assigned_to_email: req.body.assigned_to_email && req.body.assigned_to_email,
+            assigned_to_email,
             due_date: req.body.due_date && req.body.due_date
+        }
+        // Say if B got assigned from A and if B tries to reassign the task which was assigned to him, then
+        // below line will give error
+        if (assignor_id !== user_id && user_email !== assigned_to_email) {
+            return res.status(404).send({
+                success: "false",
+                message: "Cannot Re-assign the assigned task. Update operation failed"
+            })
         }
         console.log("New_Tasks", new_task)
         const updated_task = { ...original_task._doc, ...new_task }
@@ -106,10 +130,14 @@ const updateTaskController = async (req, res) => {
 };
 const readTaskController = async (req, res) => {
     try {
-        // Matching both the task_id and user_id , however only task_id can do the work
-        const task_id = req.params.task_id
+
         const user_id = req.body.id
-        const tasks = await taskModel.find({ _id: task_id, user_id: user_id })
+        const user = await userModel.findById(user_id)
+        const user_email = user.email
+        // Finds all tasks which are assigned to a person and tasks of his own too.
+        // assignor_id will be same as user_id and once created and remains constant.
+        const tasks = await taskModel.find({ $or: [{ "assignor_id": user_id }, { "assigned_to_email": { $eq: user_email } }], })
+        console.log("Tasks", tasks)
         if (!tasks) {
             return res.status(404).send({
                 success: false,
@@ -122,7 +150,10 @@ const readTaskController = async (req, res) => {
             message: "Tasks Retrieved Successfully",
             tasks
         })
+
+
     } catch (err) {
+        console.log(err)
         return res.status(500).send({
             success: false,
             message: "Internal Server Error, Error in readTaskController API"

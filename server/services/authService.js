@@ -1,5 +1,3 @@
-const bcryptjs = require('bcryptjs');
-const userModel = require('../models/userModel');
 const { logoutController } = require('../controllers/authController');
 
 

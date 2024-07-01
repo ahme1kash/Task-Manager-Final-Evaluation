@@ -4,7 +4,7 @@ const getUserMiddleware = (req, res, next) => {
     try {
         // get token
         const token = req.headers["authorization"].split(" ")[1];
-        // console.log(token)
+        // console.log("Token", token)
         if (tokenBlacklist.includes(token)) {
             return res.status(200).send({
                 success: false,
@@ -20,6 +20,7 @@ const getUserMiddleware = (req, res, next) => {
                 });
             } else {
                 req.body.id = decode.id;
+                // console.log("From auth Middleware", req.body)
                 next();
             }
         });

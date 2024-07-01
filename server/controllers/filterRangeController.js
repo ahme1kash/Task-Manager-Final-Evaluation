@@ -14,7 +14,7 @@ const filterController = async (req, res) => {
             let today_end = new Date()
             today_end.setHours(23, 59, 59, 999);
 
-            // Can't query with only matching <createdAt: new Date()> because the new Date() contains milliseconds as per the query time by user which does not match with the createdAt time for today's task also because the milliseconds does not match in the document of mongo-collection, Therefore querying with hour range.
+            // Can't query with only matching <createdAt: new Date()> because the new Date() contains milliseconds as per the query time by user which does not match with the createdAt time for today's task because the milliseconds does not match in the document of mongo-collection, Therefore querying with hour range.
             filtered_tasks = await taskModel.find({
                 user_id: user_id,
                 createdAt: { $gt: today_start, $lte: today_end },
