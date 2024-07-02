@@ -21,6 +21,7 @@ app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api/tasks", require("./routes/taskRoutes"));
 app.use("/api/count", require("./routes/countRoutes"));
 app.use("/api/search", require("./routes/filterRangeRoutes"));
+app.use("/api/addUser", require("./routes/addToBoardRoutes"));
 
 app.listen(PORT, async () => {
     if (await connect()) {
