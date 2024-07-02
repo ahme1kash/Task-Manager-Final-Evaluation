@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { addToBoardController } = require("../controllers/addToBoardController");
+const { addToBoardUserController, getAllUserFromBoardController } = require("../controllers/addToBoardController");
 const getUserMiddleware = require("../middleware/authMiddleware");
-router.post("/onboard", getUserMiddleware, addToBoardController)
+router.post("/addUser", getUserMiddleware, addToBoardUserController)
+router.get("/getAll", getUserMiddleware, getAllUserFromBoardController)
 module.exports = router
