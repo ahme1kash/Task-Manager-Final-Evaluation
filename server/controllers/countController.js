@@ -41,9 +41,9 @@ const readCountController = async (req, res) => {
             if (task.due_date) {
                 let due_date = new Date(task.due_date);
                 let current_date = new Date();
-                console.log("current_date", current_date)
+                // console.log("current_date", current_date)
                 if (due_date >= current_date) {
-                    console.log("Due Date for task with id", task._id);
+                    // console.log("Due Date for task with id", task._id);
                     due_date_count += 1;
                 }
             }

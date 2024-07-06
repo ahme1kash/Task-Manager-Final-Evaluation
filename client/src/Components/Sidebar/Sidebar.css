@@ -1,0 +1,129 @@
+.sidebar {
+    width: 20%;
+    height: 100vh;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2.5em;
+    border-right: 0.1px solid #e0e0e0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+li span {
+    margin-bottom: 5.2em;
+    margin-left: 0.3em;
+    display: flex;
+    font-weight: 750;
+    gap: 0.8em;
+    font-size: larger
+}
+
+
+
+.sidebar ul li {
+
+    display: flex;
+    gap: 0.8em;
+    margin-bottom: 2em;
+    text-decoration: none;
+
+}
+
+.link {
+    text-decoration: none;
+    color: #999696;
+    font-weight: 720;
+
+}
+
+#navboard.active {
+    color: rgb(4, 4, 4)
+}
+
+#navdb.active {
+    color: rgb(4, 4, 4)
+}
+
+#navsettings.active {
+    color: rgb(4, 4, 4)
+}
+
+/* .link:active {
+    color: black;
+    font-weight: 900
+} */
+
+.board {
+    margin-top: -5em;
+}
+
+Link {
+    /* display: flex; */
+    /* gap: 1em; */
+    text-decoration: none;
+}
+
+.sidebar ul li Link {
+    /* color: #bc0000; */
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+
+}
+
+/* .sidebar ul li Link:active {
+    color: #000000;
+} */
+
+.sidebar ul li {
+    margin-right: 1px;
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 30%;
+    }
+
+
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 60%;
+    }
+
+    .logoutbtn {
+        position: fixed;
+        bottom: 2em;
+    }
+
+}
+
+.logoutbtn {
+
+
+    color: rgb(255, 0, 0);
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 2em;
+
+}
+
+@media (max-height: 400px) {
+    .logoutbtn {
+        position: fixed;
+
+        /* bottom: 2em; */
+
+    }
+}

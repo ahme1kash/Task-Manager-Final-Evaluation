@@ -1,0 +1,245 @@
+.signandregister {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    max-width: 40%;
+    width: 40%;
+    position: absolute;
+    right: 0;
+    bottom: 4em;
+}
+
+.welcome {
+    background-color: #17A2B8;
+    height: 100vh;
+    /* flex: 0 0 60%; */
+    width: 100%;
+    max-width: 60%;
+    top: 0;
+    left: 0;
+    justify-content: flex-end;
+    position: absolute;
+}
+
+
+
+
+.robo {
+    position: absolute;
+    /* margin: 12em 19em; */
+    width: 34vw;
+    height: 62vh;
+    top: 5em;
+    right: 15em;
+}
+
+/* .roboback {
+    /* position: sticky; */
+/* margin: 11em 21em; */
+/* float: left; */
+
+/* } */
+*/ .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 30px;
+
+}
+
+.text {
+    position: relative;
+    font-size: 24px;
+    font-weight: 450;
+    left: -1.5em;
+    top: 6em;
+}
+
+.greet {
+    color: #ffffff;
+    position: absolute;
+    top: 30em;
+    left: 14em;
+}
+
+.start {
+    word-spacing: 0.5px;
+    font-size: large;
+    font-weight: 400;
+    margin-right: 3em;
+}
+
+.greet-text {
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.inputs {
+    margin-top: 12em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* line-height: 5em; */
+    gap: 0em;
+}
+
+.input {
+    margin-bottom: 1em;
+    margin-right: 4em;
+    display: flex;
+    align-items: center;
+    width: 70vw;
+    max-width: 25em;
+    height: 40px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1px solid rgb(218, 208, 208);
+
+    /* color: #0003c5 */
+}
+
+.input img {
+    margin: 0px 1em;
+
+}
+
+.input input {
+    height: 50px;
+    max-width: 380px;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    color: #afa8a8;
+    font-size: 19px;
+    border: none;
+    outline: none;
+    /* font-family: "Open Sans" */
+}
+
+/* margin: auto auto; */
+
+
+
+.forgot-password {
+    padding-left: 63px;
+    margin-top: 27px;
+    color: #797979;
+    font-size: 18px;
+}
+
+.forgot-password span {
+    color: #4c00b4;
+    cursor: pointer;
+}
+
+.submit-container {
+    display: block;
+    /* gap: 3em; */
+    margin: 80px;
+
+
+}
+
+.acc {
+    margin-right: -2;
+    margin-top: 2em;
+    color: black;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16em;
+    height: 2em;
+    color: #fff;
+    background: rgb(23, 162, 184);
+    border-radius: 50px;
+    font-size: 22px;
+    font-weight: 200;
+    cursor: pointer;
+    margin: 0 -6em;
+    border: none
+}
+
+.gray {
+    background-color: #ffffff;
+    color: #17A2B8;
+    border: 1px solid #17A2B8;
+}
+
+@media screen and (max-width: 800px) {
+    .input {
+        max-width: 300px;
+    }
+}
+
+/* When the screen width is 600px or less */
+@media screen and (max-width: 600px) {
+    .input {
+        max-width: 200px;
+    }
+}
+
+/* When the screen width is 400px or less */
+@media screen and (max-width: 400px) {
+    .input {
+        max-width: 100px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .input {
+        max-width: 50px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .input input {
+        max-width: 50px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .input input {
+        max-width: 170px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .input input {
+        max-width: 170px;
+    }
+
+    .input input::placeholder {
+        color: transparent;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .signandregister {
+        max-width: 280px;
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .submit-container {
+        div+div {
+            margin-top: 1.2em;
+        }
+
+        max-width: 170px;
+
+    }
+
+
+}
+
+@media screen and (max-width: 550px) {
+    .welcome {
+        max-width: 20%;
+    }
+}

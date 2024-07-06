@@ -1,0 +1,57 @@
+li {
+    list-style-type: lower-roman;
+}
+
+.container {
+    display: flex;
+    margin-top: 3em;
+    gap: 8em;
+    font-size: x-large;
+
+}
+
+.header {
+    margin-right: 32em;
+}
+
+.rightblock ul li {
+    margin-bottom: 1em;
+    display: flex;
+    gap: 3em;
+}
+
+
+.leftblock ul li {
+    /* flex-direction: column; */
+    gap: 3em;
+    margin-bottom: 1em;
+    list-style-type: disc;
+
+}
+
+.rightblock ul li {
+    flex-direction: column;
+    margin-bottom: 1em;
+    gap: 3em;
+    list-style-type: disc;
+}
+
+.container li::marker {
+    color: red;
+    /* Change color of the bullet */
+}
+
+.leftcontainer {
+    background-color: rgb(249, 252, 255);
+    width: 25vw;
+}
+
+.rightcontainer {
+    background-color: rgb(249, 252, 255);
+    width: 25vw;
+}
+
+span p {
+    font-size: 23px;
+    font-weight: 400;
+}

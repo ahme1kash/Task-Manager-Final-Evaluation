@@ -6,7 +6,7 @@ const getUserMiddleware = (req, res, next) => {
         const token = req.headers["authorization"].split(" ")[1];
         // console.log("Token", token)
         if (tokenBlacklist.includes(token)) {
-            return res.status(200).send({
+            return res.status(404).send({
                 success: false,
                 message:
                     "User is Logged out, Try LogIn again to perform User Operations",
