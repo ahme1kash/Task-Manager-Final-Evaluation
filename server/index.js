@@ -10,7 +10,7 @@ dotenv.config();
 
 //  Middlewares
 const corsOptions = {
-    origin: ['*'],
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD'], // Allow only these methods
     allowedHeaders: [
         "Content-Type",
