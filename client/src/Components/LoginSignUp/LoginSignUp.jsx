@@ -29,9 +29,9 @@ const LoginSignUp = () => {
       e.preventDefault();
       if (activity == "Register" && user.password === user.confirmPassword) {
         console.log(activity);
-        const response = await axios.post(
+        await axios.post(
           "https://task-manager-final-evaluation-backend.vercel.app/api/auth/register",
-          { user },
+          user,
           {
             headers: {
               "Content-Type": "application/json",
