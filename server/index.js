@@ -9,7 +9,22 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 //  Middlewares
-app.use(cors());
+const corsOptions = {
+    origin: ['https://mern-crud-app-introduction.vercel.app'],   // Only Allowing request from the domain of frontend deployment
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD'], // Allow only these methods
+    allowedHeaders: [
+        "Content-Type",
+        "Accept",
+        "Origin",
+        "X-Requested-With",
+        "Content-Length",
+        "authorization"
+    ],
+    credentials: true
+};
+
+// Use CORS middleware with specified options
+app.use(cors(corsOptions));
 app.use(express.json())
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }))
