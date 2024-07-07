@@ -18,7 +18,7 @@ const corsOptions = {
         "Origin",
         "X-Requested-With",
         "Content-Length",
-        "authorization"
+        "Authorization"
     ],
     credentials: true
 };
