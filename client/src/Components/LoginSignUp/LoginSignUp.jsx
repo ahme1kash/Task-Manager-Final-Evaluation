@@ -71,7 +71,7 @@ const LoginSignUp = () => {
         console.error("Request error:", err.request);
       }
       console.error("Axios error:", err.message);
-      console.log("Error encountered in subitting data", err);
+      console.log("Error encountered in subitting data", err.message);
       toast.error("Data failed to get submitted successfully", {
         position: "top-right",
       });
