@@ -27,7 +27,7 @@ const LoginSignUp = () => {
   const submitForm = async (e) => {
     try {
       e.preventDefault();
-      if (activity == "Register") {
+      if (activity == "Register" && user.password === user.confirmPassword) {
         const response = await axios.post(
           "https://task-manager-final-evaluation-backend.vercel.app/api/auth/register",
           user,
