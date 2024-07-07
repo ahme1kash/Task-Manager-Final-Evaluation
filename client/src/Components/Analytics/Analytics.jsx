@@ -8,7 +8,7 @@ const Analytics = () => {
       const Token = localStorage.getItem("Token");
 
       let response = await axios.get(
-        "https://task-manager-final-evaluation-jw1jz2zz2-kashif-ahmeds-projects.vercel.app/api/count/readCount",
+        "https://task-manager-final-evaluation-backend.vercel.app/api/count/readCount",
 
         {
           headers: {
