@@ -10,7 +10,7 @@ dotenv.config();
 
 //  Middlewares
 const corsOptions = {
-    origin: ['https://mern-crud-app-introduction.vercel.app'],   // Only Allowing request from the domain of frontend deployment
+    origin: ['https://task-manager-final-evaluation-e76d.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD'], // Allow only these methods
     allowedHeaders: [
         "Content-Type",
