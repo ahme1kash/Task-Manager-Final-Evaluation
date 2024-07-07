@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import {
   createBrowserRouter,
@@ -13,13 +13,28 @@ import Analytics from "./Components/Analytics/Analytics.jsx";
 import Settings from "./Components/Settings/Settings.jsx";
 import Structure from "./Components/Structure/Structure.jsx";
 import PrivateRoutes from "./Components/Helper/PrivateRoutes.jsx";
+import LoaderComponent from "./Components/Loader/Loader.jsx";
+
+const LoadingWrapper = ({ router }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 400);
+
+    return () => clearTimeout(timeout);
+  }, [router]);
+
+  return loading ? <LoaderComponent /> : <RouterProvider router={router} />;
+};
+
 const App = () => {
   const route = createBrowserRouter([
     {
       path: "/",
       element: <LoginSignup />,
     },
-
     {
       element: <PrivateRoutes />,
       children: [
@@ -52,8 +67,8 @@ const App = () => {
                     }}
                     alt="Not Found"
                   />
-                  <h1 style={{ color: "gray" }}>OOPS! NO SIMILAR ROUTES</h1>{" "}
-                  <br></br>
+                  <h1 style={{ color: "gray" }}>OOPS! NO SIMILAR ROUTES</h1>
+                  <br />
                   <Link
                     style={{
                       cursor: "pointer",
@@ -80,7 +95,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <RouterProvider router={route}></RouterProvider>
+      <LoadingWrapper router={route} />
     </div>
   );
 };

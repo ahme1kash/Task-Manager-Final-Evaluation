@@ -1,14 +1,13 @@
-li {
-    list-style-type: lower-roman;
-}
-
 .container {
     display: flex;
-    margin-top: 3em;
+    margin-top: 2em;
     gap: 8em;
     font-size: x-large;
-
+    width: 65em;
+    height: 10em;
 }
+
+
 
 .header {
     margin-right: 32em;
@@ -16,29 +15,40 @@ li {
 
 .rightblock ul li {
     margin-bottom: 1em;
-    display: flex;
-    gap: 3em;
+    justify-content: space-between
 }
 
 
 .leftblock ul li {
-    /* flex-direction: column; */
     gap: 3em;
     margin-bottom: 1em;
     list-style-type: disc;
+    justify-content: left;
 
 }
 
 .rightblock ul li {
-    flex-direction: column;
     margin-bottom: 1em;
     gap: 3em;
     list-style-type: disc;
 }
 
-.container li::marker {
-    color: red;
-    /* Change color of the bullet */
+.rightblock,
+li::marker {
+
+    margin-left: 2em;
+}
+
+.leftblock,
+li::marker {
+
+    margin-left: 2em;
+    /* width: 2em; */
+}
+
+li::marker {
+    color: rgb(144, 196, 204);
+    font-size: 1.5em;
 }
 
 .leftcontainer {
@@ -49,9 +59,4 @@ li {
 .rightcontainer {
     background-color: rgb(249, 252, 255);
     width: 25vw;
-}
-
-span p {
-    font-size: 23px;
-    font-weight: 400;
 }

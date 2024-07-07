@@ -74,18 +74,18 @@ const LoginSignUp = () => {
     }
   };
   return (
-    <div className="container">
+    <div className="login-signup container">
       <div className="welcome">
         <div className="robowelcome">
           <img className="robo" src={robo_pic} alt="robopic" />
         </div>
         <div className="greet">
-          <h1 className="greet-text"> Welcome aboard my friend</h1>
+          <h3 className="greet-text"> Welcome aboard my friend</h3>
           <h3 className="start"> just a couple of clicks and we start</h3>
         </div>
       </div>
       <div className="signandregister">
-        <div className="header">
+        <div className="login-signup header">
           <div className="text">{activity}</div>
         </div>
         <form className="inputs" onSubmit={submitForm}>
