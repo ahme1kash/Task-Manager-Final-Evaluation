@@ -9,7 +9,7 @@ const Logout = () => {
     try {
       const Token = localStorage.getItem("Token");
       await axios.post(
-        "http://localhost:3010/api/auth/logout",
+        "https://task-manager-final-evaluation-jw1jz2zz2-kashif-ahmeds-projects.vercel.app//api/auth/logout",
         {},
         {
           headers: {

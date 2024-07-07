@@ -29,7 +29,7 @@ const LoginSignUp = () => {
       e.preventDefault();
       if (activity == "Register") {
         const response = await axios.post(
-          "http://localhost:3010/api/auth/register",
+          "https://task-manager-final-evaluation-jw1jz2zz2-kashif-ahmeds-projects.vercel.app//api/auth/register",
           user,
           {
             headers: {
@@ -44,7 +44,7 @@ const LoginSignUp = () => {
         });
       } else if (activity == "Login") {
         const response = await axios.post(
-          "http://localhost:3010/api/auth/login",
+          "https://task-manager-final-evaluation-jw1jz2zz2-kashif-ahmeds-projects.vercel.app/api/auth/login",
           user,
 
           {
