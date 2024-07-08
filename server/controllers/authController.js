@@ -12,7 +12,8 @@ const registerController = async (req, res) => {
                 message: "Some User fields are Missing.",
                 user: req.body,
                 name: req.body.name,
-                email: req.body.email
+                email: req.body.email,
+                password: req.body.password
             });
         }
         else if (password !== confirmPassword) {
