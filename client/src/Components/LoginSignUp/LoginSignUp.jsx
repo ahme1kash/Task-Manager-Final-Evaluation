@@ -27,6 +27,7 @@ const LoginSignUp = () => {
   const submitForm = async (e) => {
     try {
       e.preventDefault();
+      console.log(user.confirmPassword, user.password);
       if (activity == "Register" && user.password === user.confirmPassword) {
         console.log(activity);
         await axios.post(
