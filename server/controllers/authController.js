@@ -8,7 +8,8 @@ const registerController = async (req, res) => {
         res.json({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            confirmPassword: req.body.confirmPassword
         })
         if (!name || !email) {
             return res.status(500).send({
