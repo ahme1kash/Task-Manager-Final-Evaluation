@@ -10,7 +10,6 @@ const registerController = async (req, res) => {
             return res.status(500).send({
                 success: false,
                 message: "Some User fields are Missing.",
-                user: req.body,
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
