@@ -134,8 +134,8 @@ const LoginSignUp = () => {
               onChange={inputHandler}
               value={user.password}
             />
-            <img src={hide_password_icon} alt="hidepassword" />
-            <img src={show_password_icon} alt="showpassowrd" />
+            {/* <img src={hide_password_icon} alt="hidepassword" />
+            <img src={show_password_icon} alt="showpassowrd" /> */}
           </div>
           {activity === "Login" ? (
             <div></div>
@@ -151,7 +151,7 @@ const LoginSignUp = () => {
                 onChange={inputHandler}
                 value={user.confirmPassword}
               />
-              <img src={hide_password_icon} alt="hidepassword" />
+              {/* <img src={hide_password_icon} alt="hidepassword" /> */}
               {/* <img src={show_password_icon} alt="showpassowrd" /> */}
             </div>
           )}
