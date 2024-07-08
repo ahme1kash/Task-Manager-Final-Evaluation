@@ -28,6 +28,7 @@ const LoginSignUp = () => {
       e.preventDefault();
       if (activity == "Register") {
         console.log(activity);
+        console.log(user);
         await axios.post(
           "https://task-manager-final-evaluation-backend.vercel.app/api/auth/register",
           { user },
@@ -38,7 +39,6 @@ const LoginSignUp = () => {
             },
           }
         );
-        console.log(response);
         toast.success(" User Registered Successfully", {
           position: "top-right",
         });
