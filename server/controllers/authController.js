@@ -5,16 +5,20 @@ const JWT = require("jsonwebtoken");
 const registerController = async (req, res) => {
     try {
         const { name, email, password, confirmPassword } = req.body;
-        res.json({
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password,
-            confirmPassword: req.body.confirmPassword
-        })
-        if (!name || !email) {
+        // res.json({
+        // name: req.body.name,
+        // email: req.body.email,
+        // password: req.body.password,
+        // confirmPassword: req.body.confirmPassword
+        // })
+        if (!name || !email || password || confirmPassword) {
             return res.status(500).send({
                 success: false,
                 credentials: req.body,
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                confirmPassword: req.body.confirmPassword,
                 message: "Some User fields are Missing.",
             });
         }
