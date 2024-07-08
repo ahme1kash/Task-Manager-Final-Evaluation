@@ -4,11 +4,18 @@ const bcryptjs = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const registerController = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, confirmPassword } = req.body;
         if (!name || !email || !password) {
             return res.status(500).send({
                 success: false,
                 message: "Some User fields are Missing.",
+            });
+        }
+        else if (password !== confirmPassword) {
+            console.log("Passwords dont match")
+            return res.status(404).send({
+                success: false,
+                message: "Your Password doesn't match",
             });
         }
         //?check user
@@ -28,6 +35,7 @@ const registerController = async (req, res) => {
             password: hashedPassword,
 
         });
+        console.log("38", user)
         return res.status(201).send({
             success: true,
             message: "New User Registered Successfully",

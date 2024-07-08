@@ -16,7 +16,6 @@ const LoginSignUp = () => {
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
   };
   const [user, setUser] = useState(users);
   const inputHandler = (e) => {
@@ -27,8 +26,7 @@ const LoginSignUp = () => {
   const submitForm = async (e) => {
     try {
       e.preventDefault();
-      console.log(user.confirmPassword, user.password);
-      if (activity == "Register" && user.password === user.confirmPassword) {
+      if (activity == "Register") {
         console.log(activity);
         await axios.post(
           "https://task-manager-final-evaluation-backend.vercel.app/api/auth/register",
