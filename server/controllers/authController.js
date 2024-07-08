@@ -4,6 +4,14 @@ const bcryptjs = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const registerController = async (req, res) => {
     try {
+        //?check user
+        const existing = await userModel.findOne({ email });
+        if (existing) {
+            return res.status(500).send({
+                success: false,
+                message: "Email is Already Registered",
+            });
+        }
         const { name, email, password, confirmPassword } = req.body;
         if (!name || !email || !password || !confirmPassword) {
             return res.status(500).send({
@@ -19,14 +27,7 @@ const registerController = async (req, res) => {
                 message: "Your Password doesn't match",
             });
         }
-        //?check user
-        const existing = await userModel.findOne({ email });
-        if (existing) {
-            return res.status(500).send({
-                success: false,
-                message: "Email is Already Registered",
-            });
-        }
+
         const salt = bcryptjs.genSaltSync(10);
         const hashedPassword = await bcryptjs.hash(password, salt);
         //* Create a New User
