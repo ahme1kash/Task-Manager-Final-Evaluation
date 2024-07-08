@@ -21,7 +21,7 @@ const LoadingWrapper = ({ router }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 100);
+    }, 500);
 
     return () => clearTimeout(timeout);
   }, [router]);
