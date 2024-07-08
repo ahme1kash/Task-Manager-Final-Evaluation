@@ -20,7 +20,7 @@ const corsOptions = {
         "Content-Length",
         "authorization"
     ],
-    credentials: true
+    // credentials: true
 };
 
 // Use CORS middleware with specified options
