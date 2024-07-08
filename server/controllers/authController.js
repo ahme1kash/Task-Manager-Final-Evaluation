@@ -15,10 +15,10 @@ const registerController = async (req, res) => {
             return res.status(500).send({
                 success: false,
                 // credentials: req.body,
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password,
-                confirmPassword: req.body.confirmPassword,
+                "name": req.body.name,
+                "email": req.body.email,
+                "password": req.body.password,
+                "confirmPassword": req.body.confirmPassword,
                 message: "Some User fields are Missing.",
             });
         }
