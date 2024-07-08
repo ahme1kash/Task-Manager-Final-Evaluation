@@ -8,11 +8,7 @@ const registerController = async (req, res) => {
         if (name === undefined || email === undefined || password === undefined || confirmPassword === undefined) {
             return res.status(500).send({
                 success: false,
-                "name": req.body.name,
-                "email": req.body.email,
-                "password": req.body.password,
-                "confirmPassword": req.body.confirmPassword,
-                "message": "Some User fields are Missing.",
+                user_info: req.body
             });
         }
         else if (password !== confirmPassword) {
