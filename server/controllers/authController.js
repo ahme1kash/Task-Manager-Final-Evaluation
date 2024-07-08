@@ -5,21 +5,14 @@ const JWT = require("jsonwebtoken");
 const registerController = async (req, res) => {
     try {
         const { name, email, password, confirmPassword } = req.body;
-        // res.json({
-        // name: req.body.name,
-        // email: req.body.email,
-        // password: req.body.password,
-        // confirmPassword: req.body.confirmPassword
-        // })
         if (name === undefined || email === undefined || password === undefined || confirmPassword === undefined) {
             return res.status(500).send({
                 success: false,
-                // credentials: req.body,
                 "name": req.body.name,
                 "email": req.body.email,
                 "password": req.body.password,
                 "confirmPassword": req.body.confirmPassword,
-                message: "Some User fields are Missing.",
+                "message": "Some User fields are Missing.",
             });
         }
         else if (password !== confirmPassword) {
@@ -46,6 +39,10 @@ const registerController = async (req, res) => {
             password: hashedPassword,
 
         });
+        res.status({
+            success: true,
+            user
+        })
         console.log("38", user)
         return res.status(201).send({
             success: true,
