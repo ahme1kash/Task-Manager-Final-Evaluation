@@ -10,7 +10,6 @@ dotenv.config();
 
 // //  Middlewares
 const corsOptions = {
-    "Access-Control-Allow-Origin": ['https://task-manager-final-evaluation-frontend.vercel.app'],
     "origin": ['https://task-manager-final-evaluation-frontend.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD'], // Allow only these methods
     allowedHeaders: [

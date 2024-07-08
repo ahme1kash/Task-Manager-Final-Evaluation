@@ -30,7 +30,7 @@ const LoginSignUp = () => {
         console.log(activity);
         console.log(user);
         await axios.post(
-          "https://task-manager-final-evaluation-backend.vercel.app/api/auth/register",
+          "https://task-manager-final-evaluation-server.onrender.com/api/auth/register",
           user,
           {
             headers: {
@@ -44,7 +44,7 @@ const LoginSignUp = () => {
         });
       } else if (activity == "Login") {
         const response = await axios.post(
-          "https://task-manager-final-evaluation-backend.vercel.app/api/auth/login",
+          "https://task-manager-final-evaluation-server.onrender.com/api/auth/login",
           user,
 
           {
