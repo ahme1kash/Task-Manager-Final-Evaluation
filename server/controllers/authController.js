@@ -8,7 +8,7 @@ const registerController = async (req, res) => {
         if (!name || !email || !password || !confirmPassword) {
             return res.status(500).send({
                 success: false,
-                message: "All fields are required"
+                message: "All fields are required",
                 user_info: req.body
             });
         }
