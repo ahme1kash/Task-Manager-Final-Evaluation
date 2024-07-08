@@ -11,7 +11,7 @@ const registerController = async (req, res) => {
         // password: req.body.password,
         // confirmPassword: req.body.confirmPassword
         // })
-        if (!name || !email || password || confirmPassword) {
+        if (name === undefined || email === undefined || password === undefined || confirmPassword === undefined) {
             return res.status(500).send({
                 success: false,
                 // credentials: req.body,
