@@ -161,6 +161,7 @@ const LoginSignUp = () => {
               {activity}
             </button> */}
             <button
+              type="submit"
               className={activity === "Login" ? "submit gray" : "submit"}
               onClick={() => {
                 setActivity(activity);
