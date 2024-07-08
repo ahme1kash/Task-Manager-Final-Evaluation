@@ -31,7 +31,7 @@ const LoginSignUp = () => {
         console.log(user);
         await axios.post(
           "https://task-manager-final-evaluation-backend.vercel.app/api/auth/register",
-          { user },
+          user,
           {
             headers: {
               "Content-Type": "application/json",

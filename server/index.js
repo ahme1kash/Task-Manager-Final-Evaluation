@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3010;
 const dotenv = require("dotenv");
 dotenv.config();
 
-//  Middlewares
+// //  Middlewares
 const corsOptions = {
     origin: ['https://task-manager-final-evaluation-frontend.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD'], // Allow only these methods
@@ -20,10 +20,11 @@ const corsOptions = {
         "Content-Length",
         "authorization"
     ],
-    // credentials: true
+    credentials: true
 };
 
 // Use CORS middleware with specified options
+// app.use(cors())
 app.use(cors(corsOptions));
 app.use(express.json())
 app.use(morgan("dev"));
