@@ -6,9 +6,9 @@ const Analytics = () => {
   useEffect(() => {
     const fetchData = async () => {
       const Token = localStorage.getItem("Token");
-
+      const local_url = import.meta.env.VITE_LOCAL_URL;
       let response = await axios.get(
-        "https://task-manager-final-evaluation-server.onrender.com/api/count/readCount",
+        `${local_url}/api/count/readCount`,
 
         {
           headers: {
@@ -32,19 +32,27 @@ const Analytics = () => {
             <ul>
               <li>
                 Backlog Tasks &nbsp;&nbsp;&nbsp;&nbsp;
-                {countTaskProfile["backlog_count"]}
+                <p className="taskstatus">
+                  {countTaskProfile["backlog_count"] || 0}
+                </p>
               </li>
               <li>
                 To-do Tasks&nbsp;&nbsp;&nbsp;&nbsp;
-                {countTaskProfile["to_do_count"]}
+                <p className="taskstatus">
+                  {countTaskProfile["to_do_count"] || 0}
+                </p>
               </li>
               <li>
                 In-Progress Tasks &nbsp;&nbsp;&nbsp;&nbsp;
-                {countTaskProfile["in_progress_count"]}
+                <p className="taskstatus">
+                  {countTaskProfile["in_progress_count"] || 0}
+                </p>
               </li>
               <li>
                 Completed Tasks &nbsp;&nbsp;&nbsp;&nbsp;
-                {countTaskProfile["done_count"]}
+                <p className="taskstatus">
+                  {countTaskProfile["done_count"] || 0}
+                </p>
               </li>
             </ul>
           </div>
@@ -54,19 +62,27 @@ const Analytics = () => {
             <ul>
               <li>
                 Low Priority&nbsp;&nbsp;&nbsp;&nbsp;
-                {countTaskProfile["low_priority_count"]}
+                <p className="taskstatus">
+                  {countTaskProfile["low_priority_count"] || 0}
+                </p>
               </li>
               <li>
                 Moderate Priority&nbsp;&nbsp;&nbsp;&nbsp;
-                {countTaskProfile["moderate_priority_count"]}
+                <p className="taskstatus">
+                  {countTaskProfile["moderate_priority_count"] || 0}
+                </p>
               </li>
               <li>
                 High Priority&nbsp;&nbsp;&nbsp;&nbsp;
-                {countTaskProfile["high_priority_count"]}
+                <p className="taskstatus">
+                  {countTaskProfile["high_priority_count"] || 0}
+                </p>
               </li>
               <li>
                 Due Date Tasks&nbsp;&nbsp;&nbsp;&nbsp;
-                {countTaskProfile["due_date_count"]}
+                <p className="taskstatus">
+                  {countTaskProfile["due_date_count"] || 0}
+                </p>
               </li>
             </ul>
           </div>

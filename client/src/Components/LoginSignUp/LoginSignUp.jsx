@@ -26,25 +26,23 @@ const LoginSignUp = () => {
   const submitForm = async (e) => {
     try {
       e.preventDefault();
+      const local_url = import.meta.env.VITE_LOCAL_URL;
+      console.log(local_url);
       if (activity == "Register") {
         console.log(activity);
         console.log(user);
-        await axios.post(
-          "https://task-manager-final-evaluation-server.onrender.com/api/auth/register",
-          user,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-          }
-        );
+        await axios.post(`${local_url}/api/auth/register`, user, {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
         toast.success(" User Registered Successfully", {
-          position: "top-right",
+          position: "top-center",
         });
       } else if (activity == "Login") {
         const response = await axios.post(
-          "https://task-manager-final-evaluation-server.onrender.com/api/auth/login",
+          `${local_url}/api/auth/login`,
           user,
 
           {
@@ -56,14 +54,14 @@ const LoginSignUp = () => {
         );
         localStorage.setItem("Token", response.data.token);
         toast.success(" User Logged In Successfully", {
-          position: "top-right",
+          position: "top-center",
         });
         navigate("/home");
       }
     } catch (err) {
       // console.log(z)
       // res.status(200).json({ message: 'Resource created successfully!' });
-      //   toast.success("New User Added Successfully", { position: "top-right" });
+      //   toast.success("New User Added Successfully", { position: "top-center" });
       //   navigate("/");
       if (err.response) {
         console.error("Response error:", err.response.data);
@@ -73,7 +71,7 @@ const LoginSignUp = () => {
       console.error("Axios error:", err.message);
       console.log("Error encountered in subitting data", err.message);
       toast.error("Data failed to get submitted successfully", {
-        position: "top-right",
+        position: "top-center",
       });
       navigate("/");
     }

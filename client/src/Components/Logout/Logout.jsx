@@ -7,9 +7,10 @@ const Logout = () => {
   const navigate = useNavigate();
   const LogoutAction = async () => {
     try {
+      const local_url = import.meta.env.VITE_LOCAL_URL;
       const Token = localStorage.getItem("Token");
       await axios.post(
-        "https://task-manager-final-evaluation-server.onrender.com/api/auth/logout",
+        `${local_url}/api/auth/logout`,
         {},
         {
           headers: {
@@ -20,14 +21,14 @@ const Logout = () => {
         }
       );
       toast.success(" User Logged Out Successfully", {
-        position: "top-right",
+        position: "top-center",
       });
       localStorage.removeItem("Token");
       navigate("/");
     } catch (err) {
       console.log(err);
       toast.error("Logout Action Failed", {
-        position: "top-right",
+        position: "top-center",
       });
     }
   };

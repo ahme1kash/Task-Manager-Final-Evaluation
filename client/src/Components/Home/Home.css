@@ -1,3 +1,26 @@
-/* * {
-    background-color: aqua;
-} */
+.homewelcome {
+    display: inline;
+    margin: 0;
+    margin-left: -56vw;
+    padding-bottom: 10vw;
+    font-size: 1.6vw;
+    font-weight: 670;
+}
+
+.boardheading {
+    margin-left: -65vw;
+    font-size: 1.6vw;
+    font-weight: 700;
+    padding-top: 2vw;
+    /* letter-spacing: 0.vw; */
+}
+
+.todaysdate {
+    color: grey;
+    font-size: 1.1vw;
+    display: inline;
+    align-items: center;
+    justify-content: space-between;
+    float: right;
+    margin: -2vw -8vw;
+}

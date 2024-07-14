@@ -1,0 +1,51 @@
+h1 {
+    margin-right: 55vw;
+}
+
+.forminput {
+    margin-bottom: 1.2em;
+
+    display: flex;
+    align-items: center;
+    max-width: 26vw;
+    height: 40px;
+    border-radius: 6px;
+    /* box-sizing: border-box; */
+    border: 1px solid rgb(218, 208, 208);
+}
+
+.settinginput {
+    margin-top: 3em;
+}
+
+.forminput input {
+    height: 30px;
+    background: transparent;
+    color: #b0b0b0;
+    font-size: 19px;
+    border: none;
+    outline: none;
+    margin-left: 2em;
+}
+
+
+.submitform {
+    width: 20vw;
+    height: 3vw;
+    background: rgb(23, 162, 184);
+    border-radius: 50px;
+    font-size: 1.3vw;
+    font-weight: 100;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 3vw;
+    margin-left: -37vw;
+    border: none;
+}
+
+@media screen and (min-width: 578px) and (max-width:750px) {
+    .forminput input {
+        margin-left: 1em;
+        font-size: 12px;
+    }
+}

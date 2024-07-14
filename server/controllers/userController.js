@@ -2,16 +2,36 @@
 const userModel = require("../models/userModel");
 const bcryptjs = require("bcryptjs");
 const authService = require("../services/authService")
-// const router = express.Router();
+const getUserController = async (req, res) => {
+    try {
+        const user = await userModel.findById(req.body.id);
+        if (!user) {
+            return res.status(404).send({
+                success: false,
+                message: "User Not Found",
+            })
+        }
+        return res.status(200).send({
+            success: true,
+            message: "User Found",
+            name: user.name
 
-// console.log("Hello")
-// Update Username
+        })
+    }
+    catch (e) {
+        console.log("Internal Server Error", e)
+        res.status(500).send({
+            success: false,
+            message: "Internal Server Error, Error in API getUserControler"
+        })
 
+    }
+}
 const updateUserController = async (req, res) => {
     try {
 
         const user = await userModel.findById(req.body.id);
-
+        console.log("14", user)
 
         // validation
         if (!user) {
@@ -29,7 +49,8 @@ const updateUserController = async (req, res) => {
             old_password: req.body.old_password,
             new_password: req.body.new_password
         };
-        if (editedUser.old_password === undefined && editedUser.new_password === undefined && editedUser.name === undefined) {
+        console.log(editedUser)
+        if (!editedUser.old_password && !editedUser.new_password && !editedUser.name) {
             console.log("Line 36")
             res.status(201).send({
                 success: true,
@@ -37,7 +58,7 @@ const updateUserController = async (req, res) => {
                 editedUser,
             });
         }
-        else if (editedUser.old_password === undefined && editedUser.new_password === undefined && editedUser.name !== undefined) {
+        else if (!editedUser.old_password && !editedUser.new_password && editedUser.name !== undefined) {
             console.log("Line 44")
             const updatedUserFields = { ...user._doc, ...editedUser };
             await userModel.findByIdAndUpdate(
@@ -64,6 +85,7 @@ const updateUserController = async (req, res) => {
                 success: true,
                 message: "User Updated Successfully",
                 updatedUserFields,
+                updatedCredentials: true
             });
         }
         else if ((editedUser.old_password === undefined && editedUser.new_password !== undefined)) {
@@ -111,6 +133,7 @@ const updateUserController = async (req, res) => {
                     }
                 }
             }
+
             else {
                 console.log(await bcryptjs.compare(editedUser.old_password, user.password))
                 return res.status(500).send({
@@ -130,4 +153,4 @@ const updateUserController = async (req, res) => {
 };
 
 
-module.exports = updateUserController;
+module.exports = { getUserController, updateUserController };
