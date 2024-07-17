@@ -1,46 +1,48 @@
 .container {
     display: flex;
     margin-top: 2em;
-    gap: 8em;
+    gap: 5em;
     font-size: x-large;
-    width: 65em;
-    height: 10em;
+    margin-left: 2em;
+    width: 100%;
 }
 
 
 
 .header {
     margin-right: 32em;
+    font-family: sans-serif;
+    font-weight: 550;
 }
 
-.rightblock ul li {
-    margin-bottom: 1em;
-    justify-content: space-between
-}
 
 
 .leftblock ul li {
-    gap: 3em;
-    margin-bottom: 1em;
-    list-style-type: disc;
     text-align: left;
-    display: flex;
+    margin-bottom: -4vw;
+    margin-bottom: -3em;
 
+    list-style-type: disc;
 }
+
+
 
 .rightblock ul li {
-    margin-bottom: 1em;
-    gap: 3em;
     list-style-type: disc;
     text-align: left;
-    display: flex;
+    margin-bottom: -3em;
 }
 
-.taskstatus {
-    /* text-align: right; */
-    margin-left: auto;
-    margin-right: 0.6em;
+
+.listtasks span {
+    display: inline-flex;
+    font-size: large;
+    margin-inline-start: 7vw;
+
 }
+
+
+/* .taskstatus {} */
 
 .rightblock,
 li::marker {
@@ -50,9 +52,7 @@ li::marker {
 
 .leftblock,
 li::marker {
-
     margin-left: 2em;
-    /* width: 2em; */
 }
 
 li::marker {
@@ -63,9 +63,13 @@ li::marker {
 .leftcontainer {
     background-color: rgb(249, 252, 255);
     width: 25vw;
+    height: 17vw;
+
 }
 
 .rightcontainer {
     background-color: rgb(249, 252, 255);
     width: 25vw;
+    height: 17vw;
+
 }

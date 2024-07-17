@@ -28,7 +28,6 @@ h1 {
     margin-left: 2em;
 }
 
-
 .submitform {
     width: 20vw;
     height: 3vw;
@@ -39,7 +38,9 @@ h1 {
     cursor: pointer;
     color: #fff;
     margin-top: 3vw;
-    margin-left: -37vw;
+    /* margin-left: -45vw; */
+
+    margin-left: -50vw;
     border: none;
 }
 

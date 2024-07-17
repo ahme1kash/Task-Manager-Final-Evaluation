@@ -3,7 +3,17 @@ const validator = require("validator");
 const Schema = mongoose.Schema;
 const taskStepSchema = new mongoose.Schema({
     description: String,
-    done: Boolean
+    done: {
+        type: "Boolean",
+        default: false,
+    },
+    count_tasks: {
+        type: "Number"
+    },
+    total_tasks: {
+        type: "Number"
+    }
+
 });
 const taskSchema = new Schema({
     user_id: {
@@ -37,7 +47,6 @@ const taskSchema = new Schema({
         type: String,
         default: "To do",
         enum: ["To do", "Backlog", "Done", "In Progress"],
-        required: true
     },
     task_steps: [taskStepSchema],
     assigned_to_email: {

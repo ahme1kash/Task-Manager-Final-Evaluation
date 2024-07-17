@@ -42,8 +42,11 @@ li span {
 
 }
 
+
+
 #navboard.active {
-    color: rgb(4, 4, 4)
+    color: rgb(4, 4, 4);
+
 }
 
 #navdb.active {

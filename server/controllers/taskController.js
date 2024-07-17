@@ -13,7 +13,8 @@ const createTaskController = async (req, res) => {
         const user_email = user.email
         // const assignor = user.email
         // By default assigning task to creator of task if he does not assigns the task to someone.
-        assigned_to_email = req.body.assigned_to_email?.valueOf();
+        assigned_to_email = req.body.assigned_to_email
+        console.log("Assigned_to_email", assigned_to_email)
         if (assigned_to_email == undefined) {
             assigned_to_email = user.email
         }
@@ -25,7 +26,8 @@ const createTaskController = async (req, res) => {
             task_title,
             task_priority,
             task_steps,
-            due_date
+            due_date,
+
 
         } = req.body;
         // Must to add fields

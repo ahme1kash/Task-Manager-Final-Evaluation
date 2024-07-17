@@ -1,0 +1,17 @@
+.cards {
+    background-color: #EEF2F5;
+    width: 25vw;
+    height: 36.4vw;
+    border-radius: 1vw;
+    margin-top: 1vw;
+    position: relative;
+
+
+
+}
+
+.cardtitle {
+    margin-right: 16.5vw;
+    padding-top: 0.6vw;
+
+}

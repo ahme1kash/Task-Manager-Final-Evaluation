@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Cards from "../Cards/Cards.jsx";
+
 import "./Home.css";
 console.log("Hello");
 const Home = () => {
@@ -23,7 +25,7 @@ const Home = () => {
     fetchUserData();
   }, [user]);
   return (
-    <div>
+    <div className="homepage">
       <h3 className="homewelcome">
         Welcome! <span>&nbsp;&nbsp;&nbsp;{user}&nbsp;&nbsp;</span>
         <span className="todaysdate">
@@ -35,6 +37,30 @@ const Home = () => {
       <br></br>
       <br></br>
       <h2 className="boardheading">Board</h2>
+      <div className="selectcontainer">
+        <select className="selectoption" id="cars" name="cars">
+          <option value="today">Today</option>
+          <option defaultValue value="week">
+            This Week
+          </option>
+          <option value="month">This Month</option>
+        </select>
+      </div>
+
+      <div className="cardcontainer">
+        <Cards
+          className="backlogcard"
+          title="Backlog"
+          showModalButton={false}
+        />
+        <Cards className="todocard" title="To do" showModalButton={true} />
+        <Cards
+          className="inprogresscard"
+          title="In Progress"
+          showModalButton={false}
+        />
+        <Cards className="donecard" title="Done" showModalButton={false} />
+      </div>
     </div>
   );
 };

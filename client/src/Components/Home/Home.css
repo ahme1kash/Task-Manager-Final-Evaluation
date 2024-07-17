@@ -1,18 +1,19 @@
 .homewelcome {
     display: inline;
-    margin: 0;
-    margin-left: -56vw;
-    padding-bottom: 10vw;
+    /* padding-top: -87em; */
+    margin-left: -61vw;
+    /* padding-bottom: 10vw; */
     font-size: 1.6vw;
     font-weight: 670;
 }
 
 .boardheading {
-    margin-left: -65vw;
+    margin-left: -70vw;
     font-size: 1.6vw;
     font-weight: 700;
-    padding-top: 2vw;
-    /* letter-spacing: 0.vw; */
+    /* padding-bottom: 1vw; */
+    margin-top: 0.5vw;
+
 }
 
 .todaysdate {
@@ -22,5 +23,33 @@
     align-items: center;
     justify-content: space-between;
     float: right;
-    margin: -2vw -8vw;
+    margin: -2vw 2vw;
+    font-weight: 500;
+}
+
+.cardcontainer {
+    display: flex;
+    gap: 2vw;
+    padding-bottom: 1vw;
+    overflow-x: scroll;
+    width: 100%;
+    scrollbar-color: rgb(175, 208, 221) rgb(255, 255, 255);
+    scroll-behavior: smooth;
+}
+
+.selectcontainer {
+    margin-left: 65em;
+    margin-top: -2em;
+    border: 1px solid rgb(218, 208, 208);
+    max-width: 7.5em;
+    height: 1.5em;
+    border: none
+        /* align-items: center; */
+
+}
+
+.selectoption {
+    border: none;
+    outline-style: none;
+    font-size: 1em;
 }

@@ -30,29 +30,30 @@ const Analytics = () => {
         <div className=" leftcontainer">
           <div className=" leftblock">
             <ul>
-              <li>
-                Backlog Tasks &nbsp;&nbsp;&nbsp;&nbsp;
-                <p className="taskstatus">
+              <li className="listtasks">
+                Backlog Tasks
+                <span className="taskstatus">
                   {countTaskProfile["backlog_count"] || 0}
-                </p>
+                </span>
               </li>
-              <li>
-                To-do Tasks&nbsp;&nbsp;&nbsp;&nbsp;
-                <p className="taskstatus">
+
+              <li className="listtasks">
+                To-do Tasks
+                <span className="taskstatus">
                   {countTaskProfile["to_do_count"] || 0}
-                </p>
+                </span>
               </li>
-              <li>
-                In-Progress Tasks &nbsp;&nbsp;&nbsp;&nbsp;
-                <p className="taskstatus">
+              <li className="listtasks">
+                In-Progress Tasks
+                <span className="taskstatus">
                   {countTaskProfile["in_progress_count"] || 0}
-                </p>
+                </span>
               </li>
-              <li>
-                Completed Tasks &nbsp;&nbsp;&nbsp;&nbsp;
-                <p className="taskstatus">
+              <li className="listtasks">
+                Completed Tasks
+                <span className="taskstatus">
                   {countTaskProfile["done_count"] || 0}
-                </p>
+                </span>
               </li>
             </ul>
           </div>
@@ -60,29 +61,29 @@ const Analytics = () => {
         <div className=" rightcontainer">
           <div className=" rightblock">
             <ul>
-              <li>
-                Low Priority&nbsp;&nbsp;&nbsp;&nbsp;
-                <p className="taskstatus">
+              <li className="listtasks">
+                Low Priority
+                <span className="taskstatus">
                   {countTaskProfile["low_priority_count"] || 0}
-                </p>
+                </span>
               </li>
-              <li>
-                Moderate Priority&nbsp;&nbsp;&nbsp;&nbsp;
-                <p className="taskstatus">
+              <li className="listtasks">
+                Moderate Priority
+                <span className="taskstatus">
                   {countTaskProfile["moderate_priority_count"] || 0}
-                </p>
+                </span>
               </li>
-              <li>
-                High Priority&nbsp;&nbsp;&nbsp;&nbsp;
-                <p className="taskstatus">
+              <li className="listtasks">
+                High Priority
+                <span className="taskstatus">
                   {countTaskProfile["high_priority_count"] || 0}
-                </p>
+                </span>
               </li>
-              <li>
-                Due Date Tasks&nbsp;&nbsp;&nbsp;&nbsp;
-                <p className="taskstatus">
+              <li className="listtasks">
+                Due Date Tasks
+                <span className="taskstatus">
                   {countTaskProfile["due_date_count"] || 0}
-                </p>
+                </span>
               </li>
             </ul>
           </div>
