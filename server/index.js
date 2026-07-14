@@ -9,8 +9,13 @@ require("colors")
 const PORT = process.env.PORT || 3010;
 
 const corsOptions = {
-    "origin": ['https://task-manager-final-evaluation-client.onrender.com'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD'], // Allow only these methods
+    origin: [
+        'http://localhost:5173',
+        'https://task-manager-final-evaluation-client.onrender.com',
+        'https://task-manager-final-evaluation-2.onrender.com',
+        process.env.FRONTEND_URL,
+    ].filter(Boolean),
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS'],
     allowedHeaders: [
         "Content-Type",
         "Accept",
@@ -19,13 +24,10 @@ const corsOptions = {
         "Content-Length",
         "authorization"
     ],
-    // credentials: true
 };
 
-// Use CORS middleware with specified options
-// app.use(cors())
 app.use(cors(corsOptions));
-app.use(cors())
+app.options("*", cors(corsOptions));
 app.use(express.json())
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }))
