@@ -4,6 +4,31 @@ const addToBoardModel = require("../models/addToBoardModel");
 const bcryptjs = require("bcryptjs");
 const authService = require("../services/authService");
 
+const getUserController = async (req, res) => {
+    try {
+        const user = await userModel.findById(req.user.id).select("name email");
+
+        if (!user) {
+            return res.status(404).send({
+                success: false,
+                message: "User Not Found",
+            });
+        }
+
+        return res.status(200).send({
+            success: true,
+            message: "User fetched successfully",
+            user,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({
+            success: false,
+            message: "Error in Get User Api",
+        });
+    }
+};
+
 const updateUserController = async (req, res) => {
     try {
         const userId = req.user.id;
@@ -108,4 +133,4 @@ const updateUserController = async (req, res) => {
     }
 };
 
-module.exports = updateUserController;
+module.exports = { getUserController, updateUserController };
