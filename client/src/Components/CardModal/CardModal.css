@@ -1,0 +1,234 @@
+.taskmodal {
+    width: 50vw;
+    height: 38vw;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1vw;
+    /* overflow-x: hidden; */
+
+}
+
+
+.taskmodalcontent {
+    margin-left: 6.2em;
+}
+
+.taskmodaloverlay {
+    background-color: #9394949a;
+}
+
+.modalbox {
+    margin-left: 0.4em;
+}
+
+.req1 {
+    color: red
+}
+
+.inputtask {
+    margin-top: 0.5em;
+    align-items: center;
+    max-width: 46em;
+    height: 40px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1px solid rgb(218, 208, 208);
+}
+
+.tasktitleinput {
+    width: 32em;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-left: 2em;
+    color: rgb(138, 138, 138);
+    font-size: 20px;
+}
+
+.newinputdiv {
+    display: flex;
+    align-items: center;
+    max-width: 55em;
+    height: 44px;
+    border-radius: 15px;
+    border: 1px solid rgb(218, 208, 208);
+    margin-bottom: 1em;
+
+
+}
+
+.inputstep {
+    width: 44em;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-left: 2em;
+    color: rgb(138, 138, 138);
+    font-size: 20px;
+
+}
+
+
+
+::placeholder {
+    color: rgba(134, 139, 142, 0.4)
+}
+
+.prioritycontainer {
+    margin-top: 2em;
+    display: flex;
+
+}
+
+.prioritycontainer h5 {
+    font-size: 1.1vw;
+    font-weight: 600;
+    margin-left: 0.5em;
+}
+
+.priorities {
+    display: flex;
+    gap: 5.5em;
+    padding-left: 2.5em;
+    /* width: 5em; */
+
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    font-size: 0.8em;
+    font-weight: medium;
+}
+
+.radio1 {
+    /* background-color: rgba(244, 255, 243, 0.767); */
+    padding-left: auto 0.5em 0.5em;
+    border-radius: 0.4em;
+    border-color: rgb(32, 32, 32);
+    border-width: 6px;
+
+}
+
+.checklistcontainer {
+    margin-top: 2em;
+}
+
+.addsteps {
+    margin-top: 2em;
+    color: rgba(134, 139, 142)
+}
+
+.duedate {
+    align-items: center;
+    max-width: 14em;
+    height: 45px;
+    border-radius: 15px;
+    border: 1px solid rgb(218, 208, 208);
+}
+
+.datepicker {
+    width: 10em;
+    height: 30px;
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-left: 1.7em;
+    margin-top: 0.4em;
+    font-size: 1.2em;
+    font-weight: 500;
+    /* color: rgb(138, 138, 138); */
+    /* color: rgb(62, 61, 61); */
+}
+
+.datepicker::placeholder {
+    color: rgb(56, 55, 55);
+
+}
+
+.taskfootercontainer {
+    margin-top: 13vw;
+    display: flex;
+    justify-content: space-between;
+    gap: 10em;
+    padding: 0 2vw;
+
+}
+
+.taskbuttons {
+    gap: 2vw;
+    align-items: center;
+    display: flex;
+}
+
+.canceldiv {
+    max-width: 9em;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid rgb(236, 0, 0);
+}
+
+.savediv {
+    max-width: 9em;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid rgb(218, 208, 208);
+    background-color: #17A2B8;
+}
+
+.operationbutton {
+    color: white;
+    width: 7em;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-left: -0.2em;
+    margin-right: em;
+    margin-top: 0.2em;
+    font-size: 1.3em;
+}
+
+#cancel {
+    color: rgb(255, 0, 0);
+}
+
+
+.assigndivcontainer {
+    display: inline-flex;
+    gap: 1vw;
+    margin-top: 1.3em;
+
+
+
+}
+
+.assigndivcontainer h4 {
+    margin-top: 0.6em;
+}
+
+.assignspan {
+    display: flex;
+    border-radius: 5px;
+    border: 1px solid rgb(218, 208, 208);
+    max-width: 37.5em;
+    height: 2.5em;
+    align-items: center;
+    box-shadow: 4px 4px 3px 1px rgb(205, 229, 238);
+
+}
+
+.assigninput {
+    width: 55em;
+    outline: none;
+    border: none;
+    height: 2.7em;
+    border-radius: 15px;
+    margin-left: 2em;
+    font-size: 19px;
+    background: transparent;
+    color: rgb(138, 138, 138);
+}

@@ -19,8 +19,7 @@ body {
 
     font-family: "Open Sans";
     height: 100%;
+    overflow: hidden;
 
-
-    overflow-x: hidden;
 
 }

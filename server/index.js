@@ -8,8 +8,24 @@ const morgan = require("morgan")
 require("colors")
 const PORT = process.env.PORT || 3010;
 
-//  Middlewares
-app.use(cors());
+const corsOptions = {
+    "origin": ['https://task-manager-final-evaluation-client.onrender.com'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD'], // Allow only these methods
+    allowedHeaders: [
+        "Content-Type",
+        "Accept",
+        "Origin",
+        "X-Requested-With",
+        "Content-Length",
+        "authorization"
+    ],
+    // credentials: true
+};
+
+// Use CORS middleware with specified options
+// app.use(cors())
+app.use(cors(corsOptions));
+app.use(cors())
 app.use(express.json())
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }))
