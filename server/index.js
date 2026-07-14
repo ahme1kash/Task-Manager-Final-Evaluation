@@ -13,6 +13,7 @@ const corsOptions = {
         'http://localhost:5173',
         'https://task-manager-final-evaluation-client.onrender.com',
         'https://task-manager-final-evaluation-2.onrender.com',
+        'https://task-manager-final-evaluation-static.onrender.com',
         process.env.FRONTEND_URL,
     ].filter(Boolean),
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS'],
@@ -22,6 +23,7 @@ const corsOptions = {
         "Origin",
         "X-Requested-With",
         "Content-Length",
+        "Authorization",
         "authorization"
     ],
 };
