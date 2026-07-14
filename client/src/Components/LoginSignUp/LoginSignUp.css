@@ -1,159 +1,139 @@
-.signandregister {
-    display: flex;
-    flex-direction: column;
-    /* padding-bottom: 30px; */
-    max-width: 40%;
-    width: 100%;
-    position: absolute;
-    right: 0;
-    bottom: 1em;
+.login-signup.container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(22rem, 2fr);
+    background: #ffffff;
 }
 
 .welcome {
+    min-height: 100vh;
     background-color: #17A2B8;
-    height: 100vh;
-    /* flex: 0 0 60%; */
-    width: 100%;
-    max-width: 60%;
-    top: 0;
-    left: 0;
-    justify-content: flex-end;
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    color: #ffffff;
 }
 
-
-
+.robowelcome {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 
 .robo {
-    position: absolute;
-    /* margin: 12em 19em; */
-    width: 34vw;
-    height: 62vh;
-    top: 2em;
-    right: 11em;
-}
-
-/* .roboback {
-    /* position: sticky; */
-/* margin: 11em 21em; */
-/* float: left; */
-
-/* } */
-.login-signup .header {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    width: 100%;
-    /* gap: 9px; */
-    /* margin-top: 6em; */
-
-}
-
-.text {
-    position: relative;
-    font-size: 24px;
-    font-weight: 450;
-    left: 0.5em;
-    top: 10em;
+    width: min(34rem, 68%);
+    max-height: 58vh;
+    object-fit: contain;
 }
 
 .greet {
-    color: #ffffff;
-    position: absolute;
-    top: 21em;
-    left: 8.5em;
-}
-
-.start {
-    word-spacing: 0.5px;
-    font-size: large;
-    font-weight: 400;
-    margin-right: 3em;
-    margin-top: 0.5em;
+    text-align: center;
 }
 
 .greet-text {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+}
+
+.start {
+    font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+    font-weight: 400;
+    margin-top: 0.65rem;
+}
+
+.signandregister {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem clamp(1.25rem, 5vw, 5rem);
+}
+
+.login-signup.header {
+    width: 100%;
+}
+
+.text {
+    font-size: clamp(1.55rem, 2vw, 2rem);
     font-weight: 600;
-    letter-spacing: 2px;
-    font-size: 1.3em;
+    margin-bottom: 2.4rem;
+    text-align: center;
 }
 
 .inputs {
-    margin-top: 12em;
-    /* display: flex; */
+    width: min(100%, 26rem);
+    margin: 0 auto;
+    display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* line-height: 5em; */
-    /* gap: 0em; */
-    margin-left: 3em;
 }
 
 .input {
-    margin-bottom: 1.2em;
-
     display: flex;
     align-items: center;
-    max-width: 20em;
-    height: 40px;
-    border-radius: 6px;
-    box-sizing: border-box;
-    border: 1px solid rgb(218, 208, 208);
-
-    /* color: #0003c5 */
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 3rem;
+    margin-bottom: 1.15rem;
+    border-radius: 0.45rem;
+    border: 1px solid #d7d7d7;
+    padding: 0 0.9rem;
+    background: #ffffff;
 }
 
 .input img {
-    margin: 0px 1em;
-
+    width: 1.2rem;
+    height: 1.2rem;
+    object-fit: contain;
+    flex: 0 0 auto;
+    opacity: 0.72;
 }
 
 .input input {
-    height: 50px;
-    max-width: 380px;
     width: 100%;
+    min-width: 0;
+    height: 2.8rem;
     background: transparent;
     outline: none;
-    color: #afa8a8;
-    font-size: 19px;
+    color: #000000;
+    font-size: 1rem;
     border: none;
-    outline: none;
-    /* font-family: "Open Sans" */
+    font-family: inherit;
 }
 
-/* margin: auto auto; */
-
-
-
-
+.input input::placeholder {
+    color: #9a9a9a;
+}
 
 .submit-container {
-    display: block;
-    margin-left: 8em;
-    margin-bottom: 4em;
-
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 1rem;
 }
 
 .acc {
-    margin-left: -12em;
-    margin-top: 2em;
-    color: black;
+    color: #7a7a7a;
+    margin: 0;
 }
 
 .submit {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 16em;
-    height: 2em;
-    color: #fff;
-    background: rgb(23, 162, 184);
-    border-radius: 50px;
-    font-size: 22px;
-    font-weight: 200;
+    width: 100%;
+    min-height: 3rem;
+    color: #ffffff;
+    background: #17A2B8;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
-    margin: 0 -6em;
-    border: none
+    border: none;
 }
 
 .gray {
@@ -162,136 +142,102 @@
     border: 1px solid #17A2B8;
 }
 
-@media screen and (max-width: 800px) {
-    .input {
-        max-width: 300px;
-    }
-}
-
-/* When the screen width is 600px or less */
-@media screen and (max-width: 600px) {
-    .input {
-        max-width: 200px;
-    }
-}
-
-/* When the screen width is 400px or less */
-@media screen and (max-width: 400px) {
-    .input {
-        max-width: 100px;
-    }
-}
-
-@media screen and (max-width: 370px) {
-    .input {
-        max-width: 50px;
-    }
-}
-
-@media screen and (max-width: 380px) {
-    .input input {
-        max-width: 50px;
-    }
-}
-
-@media screen and (max-width: 280px) {
-    .input input {
-        max-width: 170px;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .input input {
-        max-width: 170px;
-    }
-
-    .input input::placeholder {
-        color: transparent;
-    }
-}
-
-@media screen and (max-width: 550px) {
-    .signandregister {
-        max-width: 280px;
-        margin-left: auto;
-
-    }
-}
-
-@media screen and (max-width: 550px) {
-    .submit-container {
-        div+div {
-            margin-top: 1.2em;
-        }
-
-        max-width: 170px;
-
-    }
-
-
-}
-
-@media screen and (max-width: 550px) {
-    .welcome {
-        max-width: 20%;
-    }
-}
-
 @media (max-width: 385px) {
+    .login-signup.container {
+        display: block;
+    }
+
     .welcome {
         display: none;
     }
 
     .signandregister {
-        position: static;
-        max-width: 100%;
-        min-height: 100vh;
-        justify-content: center;
-        padding: 1em;
+        padding: 1.25rem;
     }
 
-    .text,
-    .inputs {
-        position: static;
-        margin: 0;
+    .text {
+        margin-bottom: 1.7rem;
     }
 
     .input {
-        max-width: 100%;
-    }
-
-    .submit-container {
-        margin-left: 0;
+        min-height: 2.8rem;
     }
 }
 
-@media (min-width: 386px) and (max-width: 767px) {
+@media (min-width: 386px) and (max-width: 499px) {
+    .login-signup.container {
+        display: block;
+    }
+
     .welcome {
-        max-width: 34%;
+        min-height: 34vh;
+        padding: 1.5rem;
+        gap: 1rem;
     }
 
     .robo {
-        width: 28vw;
-        height: auto;
-        right: 1em;
-    }
-
-    .greet {
-        left: 1em;
-        top: 18em;
+        width: min(12rem, 48vw);
+        max-height: 18vh;
     }
 
     .signandregister {
-        max-width: 66%;
+        min-height: 66vh;
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+    .login-signup.container {
+        grid-template-columns: minmax(12rem, 38%) minmax(0, 62%);
+    }
+
+    .welcome {
+        padding: 1.5rem;
+    }
+
+    .robo {
+        width: min(15rem, 80%);
+    }
+
+    .greet-text {
+        letter-spacing: 0.03em;
+    }
+
+    .signandregister {
+        padding: 1.5rem;
     }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .robo {
-        right: 4em;
+    .login-signup.container {
+        grid-template-columns: minmax(0, 55%) minmax(21rem, 45%);
     }
 
-    .greet {
-        left: 4em;
+    .welcome {
+        padding: 2rem;
+    }
+
+    .robo {
+        width: min(22rem, 72%);
+    }
+
+    .signandregister {
+        padding: 2rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .login-signup.container {
+        grid-template-columns: minmax(0, 58%) minmax(23rem, 42%);
+    }
+
+    .robo {
+        width: min(28rem, 70%);
+    }
+}
+
+@media (min-width: 1200px) {
+    .login-signup.container {
+        grid-template-columns: minmax(0, 60%) minmax(24rem, 40%);
     }
 }

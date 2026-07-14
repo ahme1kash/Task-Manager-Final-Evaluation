@@ -64,12 +64,8 @@ const LoginSignUp = () => {
         navigate("/home");
       }
     } catch (err) {
-      // console.log(z)
-      // res.status(200).json({ message: 'Resource created successfully!' });
-      //   navigate("/");
-
       console.log("Error encountered in subitting data", err);
-      toast.error("Data failed to get submitted successfully", {
+      toast.error(err.response?.data?.message || "Data failed to get submitted successfully", {
         position: "top-center",
       });
       navigate("/");

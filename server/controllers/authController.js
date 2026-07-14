@@ -6,26 +6,26 @@ const registerController = async (req, res) => {
     try {
 
         const { name, email, password, confirmPassword } = req.body;
+        if (!name || !email || !password || !confirmPassword) {
+            return res.status(400).send({
+                success: false,
+                message: "All fields are required",
+            });
+        }
+
+        if (password !== confirmPassword) {
+            return res.status(400).send({
+                success: false,
+                message: "Your password doesn't match",
+            });
+        }
+
         //?check user
         const existing = await userModel.findOne({ email });
         if (existing) {
-            return res.status(500).send({
+            return res.status(409).send({
                 success: false,
                 message: "Email is Already Registered",
-            });
-        }
-        if (!name || !email || !password || !confirmPassword) {
-            return res.status(500).send({
-                success: false,
-                message: "All fields are required",
-                user_info: req.body
-            });
-        }
-        else if (password !== confirmPassword) {
-            console.log("Passwords dont match")
-            return res.status(404).send({
-                success: false,
-                message: "Your Password doesn't match",
             });
         }
 
@@ -38,11 +38,6 @@ const registerController = async (req, res) => {
             password: hashedPassword,
 
         });
-        res.status({
-            success: true,
-            user
-        })
-        console.log("38", user)
         return res.status(201).send({
             success: true,
             message: "New User Registered Successfully",
@@ -64,9 +59,9 @@ const loginController = async (req, res) => {
         // validation
         //^ Login value(s) missing.
         if (!email || !password) {
-            return res.status(500).send({
-                successs: false,
-                message: "Both Email and Passowrd are required for Secure LogIn 😊",
+            return res.status(400).send({
+                success: false,
+                message: "Both email and password are required for login",
             });
         }
 
