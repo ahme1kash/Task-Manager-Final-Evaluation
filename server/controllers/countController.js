@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const taskModel = require("../models/taskModel");
+const userModel = require("../models/userModel");
 const readCountController = async (req, res) => {
     try {
-        const user_id = req.body.id;
-        // console.log(user_id);
-        const tasks = await taskModel.find({ user_id: user_id });
-        // console.log(tasks)
+        const user_id = req.user.id;
+        const user = await userModel.findById(user_id);
+        const tasks = await taskModel.find({ $or: [{ "assignor_id": user_id }, { "assigned_to_email": { $eq: user.email } }] });
 
         let to_do_count = 0,
             in_progress_count = 0,
@@ -13,7 +13,7 @@ const readCountController = async (req, res) => {
             backlog_count = 0,
             high_priority_count = 0,
             low_priority_count = 0,
-            moderate_prority_count = 0,
+            moderate_priority_count = 0,
             due_date_count = 0;
 
         for (let task of tasks) {
@@ -33,9 +33,9 @@ const readCountController = async (req, res) => {
                 high_priority_count += 1;
             }
             if (task.task_priority === "MODERATE PRIORITY") {
-                moderate_prority_count += 1;
+                moderate_priority_count += 1;
             }
-            if (task.task_status === "LOW PRIORITY") {
+            if (task.task_priority === "LOW PRIORITY") {
                 low_priority_count += 1;
             }
             if (task.due_date) {
@@ -61,7 +61,7 @@ const readCountController = async (req, res) => {
             backlog_count,
             high_priority_count,
             low_priority_count,
-            moderate_prority_count,
+            moderate_priority_count,
             due_date_count,
         };
         return res.status(200).send({

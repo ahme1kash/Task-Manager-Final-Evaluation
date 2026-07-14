@@ -2,6 +2,7 @@ const express = require("express");
 const {
     createTaskController,
     updateTaskStatusController,
+    moveTaskController,
     updateTaskController,
     readTaskController,
     deleteTaskController
@@ -15,4 +16,5 @@ router.put("/updateTask/:task_id", getUserMiddleware, updateTaskController);
 router.get("/readTask", getUserMiddleware, readTaskController);
 router.delete("/deleteTask/:task_id", getUserMiddleware, deleteTaskController);
 router.put("/updateTaskStatus/:task_id", getUserMiddleware, updateTaskStatusController);
+router.put("/moveTask/:task_id", getUserMiddleware, moveTaskController);
 module.exports = router;

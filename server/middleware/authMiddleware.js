@@ -1,32 +1,32 @@
 const JWT = require("jsonwebtoken");
-const { tokenBlacklist } = require("../controllers/authController");
-const getUserMiddleware = (req, res, next) => {
+const tokenBlacklistModel = require("../models/tokenBlacklistModel");
+
+const getUserMiddleware = async (req, res, next) => {
     try {
-        // get token
-        const token = req.headers["authorization"].split(" ")[1];
-        // console.log("Token", token)
-        if (tokenBlacklist.includes(token)) {
+        const authHeader = req.headers["authorization"];
+        const token = authHeader && authHeader.split(" ")[1];
+
+        if (!token) {
+            return res.status(401).send({
+                success: false,
+                message: "Please provide Auth Token",
+            });
+        }
+
+        const blacklistedToken = await tokenBlacklistModel.findOne({ token });
+        if (blacklistedToken) {
             return res.status(404).send({
                 success: false,
                 message:
                     "User is Logged out, Try LogIn again to perform User Operations",
             });
         }
-        JWT.verify(token, process.env.JWT_SECRET, (err, decode) => {
-            if (err) {
-                return res.status(401).send({
-                    success: false,
-                    message: "Un-Authorized User",
-                });
-            } else {
-                req.body.id = decode.id;
-                // console.log("From auth Middleware", req.body)
-                next();
-            }
-        });
+        const decoded = JWT.verify(token, process.env.JWT_SECRET);
+        req.user = { id: decoded.id };
+        next();
     } catch (err) {
         console.log(err);
-        res.status(500).send({
+        res.status(401).send({
             success: false,
             message: "Please provide Auth Token",
             err,

@@ -1,62 +1,100 @@
-.container {
+.analytics-page {
+    min-height: 100vh;
+    background: #ffffff;
+    padding: 0.5em 1.5em;
+    text-align: left;
+}
+
+.analytics-header {
+    font-size: 1.35em;
+    font-weight: 650;
+    margin-bottom: 2.3em;
+}
+
+.analytics-container {
+    padding-top: 3em;
     display: flex;
-    margin-top: 2em;
-    gap: 8em;
-    font-size: x-large;
-    width: 65em;
-    height: 10em;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2em;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-
-
-.header {
-    margin-right: 32em;
+.analytics-card {
+    width: min(25em, 100%);
+    height: 20em;
+    background: #f0f8ff;
+    border-radius: 0.3em;
+    padding: 2.7em 2em;
+    border-radius: 10px;
 }
 
-.rightblock ul li {
-    margin-bottom: 1em;
-    justify-content: space-between
+.analytics-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4em;
+    margin-bottom: 2.35em;
+    font-size: 1em;
 }
 
-
-.leftblock ul li {
-    gap: 3em;
-    margin-bottom: 1em;
-    list-style-type: disc;
-    justify-content: left;
-
+.analytics-row:last-child {
+    margin-bottom: 0;
 }
 
-.rightblock ul li {
-    margin-bottom: 1em;
-    gap: 3em;
-    list-style-type: disc;
+.analytics-label {
+    position: relative;
+    padding-left: 1.3em;
+    color: #000000;
 }
 
-.rightblock,
-li::marker {
-
-    margin-left: 2em;
+.analytics-label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 50%;
+    background: #90c4cc;
+    transform: translateY(-50%);
 }
 
-.leftblock,
-li::marker {
-
-    margin-left: 2em;
-    /* width: 2em; */
+.analytics-count {
+    min-width: 2.2em;
+    text-align: right;
+    font-weight: 650;
 }
 
-li::marker {
-    color: rgb(144, 196, 204);
-    font-size: 1.5em;
+@media (max-width: 700px) {
+    .analytics-container {
+        flex-direction: column;
+    }
+
+    .analytics-card {
+        width: 100%;
+    }
 }
 
-.leftcontainer {
-    background-color: rgb(249, 252, 255);
-    width: 25vw;
+@media (max-width: 385px) {
+    .analytics-page {
+        padding: 0.75em;
+    }
+
+    .analytics-card {
+        padding: 1.2em;
+    }
 }
 
-.rightcontainer {
-    background-color: rgb(249, 252, 255);
-    width: 25vw;
+@media (min-width: 768px) and (max-width: 991px) {
+    .analytics-card {
+        width: min(22em, 100%);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .analytics-card {
+        width: min(25em, 100%);
+    }
 }

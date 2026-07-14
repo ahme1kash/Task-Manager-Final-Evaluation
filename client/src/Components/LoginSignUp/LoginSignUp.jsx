@@ -9,6 +9,7 @@ import show_password_icon from "../../assets/show password.png";
 import robo_pic from "../../assets/robopic.png";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config/api.js";
 // import robo_back from "../../assets/robo back.png";
 const LoginSignUp = () => {
   const [activity, setActivity] = useState("Register");
@@ -29,22 +30,22 @@ const LoginSignUp = () => {
       e.preventDefault();
       if (activity == "Register") {
         const response = await axios.post(
-          "http://localhost:3010/api/auth/register",
+          `${API_BASE_URL}/api/auth/register`,
           user,
           {
             headers: {
               "Content-Type": "application/json",
               Accept: "application/json",
             },
-          }
+          },
         );
         console.log(response);
         toast.success(" User Registered Successfully", {
-          position: "top-right",
+          position: "top-center",
         });
       } else if (activity == "Login") {
         const response = await axios.post(
-          "http://localhost:3010/api/auth/login",
+          `${API_BASE_URL}/api/auth/login`,
           user,
 
           {
@@ -52,23 +53,24 @@ const LoginSignUp = () => {
               "Content-Type": "application/json",
               Accept: "application/json",
             },
-          }
+          },
         );
         localStorage.setItem("Token", response.data.token);
+        localStorage.setItem("UserEmail", response.data.user?.[0] || "");
+        localStorage.setItem("UserName", response.data.user?.[1] || "");
         toast.success(" User Logged In Successfully", {
-          position: "top-right",
+          position: "top-center",
         });
         navigate("/home");
       }
     } catch (err) {
       // console.log(z)
       // res.status(200).json({ message: 'Resource created successfully!' });
-      //   toast.success("New User Added Successfully", { position: "top-right" });
       //   navigate("/");
 
       console.log("Error encountered in subitting data", err);
       toast.error("Data failed to get submitted successfully", {
-        position: "top-right",
+        position: "top-center",
       });
       navigate("/");
     }
@@ -130,7 +132,7 @@ const LoginSignUp = () => {
               value={user.password}
             />
             <img src={hide_password_icon} alt="hidepassword" />
-            <img src={show_password_icon} alt="showpassowrd" />
+            {/* <img src={show_password_icon} alt="showpassowrd" />*/}
           </div>
           {activity === "Login" ? (
             <div></div>

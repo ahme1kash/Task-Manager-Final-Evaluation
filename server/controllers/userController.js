@@ -1,125 +1,104 @@
-// Get USER Info
 const userModel = require("../models/userModel");
+const taskModel = require("../models/taskModel");
+const addToBoardModel = require("../models/addToBoardModel");
 const bcryptjs = require("bcryptjs");
-const authService = require("../services/authService")
-// const router = express.Router();
-
-// console.log("Hello")
-// Update Username
+const authService = require("../services/authService");
 
 const updateUserController = async (req, res) => {
     try {
+        const userId = req.user.id;
+        const user = await userModel.findById(userId);
 
-        const user = await userModel.findById(req.body.id);
-
-
-        // validation
         if (!user) {
             return res.status(404).send({
                 success: false,
                 message: "User Not Found",
             });
         }
-        // const user_details = {
-        //     name: user.name,
-        //     password: user.password
-        // }
-        const editedUser = {
-            name: req.body.name,
-            old_password: req.body.old_password,
-            new_password: req.body.new_password
-        };
-        if (editedUser.old_password === undefined && editedUser.new_password === undefined && editedUser.name === undefined) {
-            console.log("Line 36")
-            res.status(201).send({
-                success: true,
-                message: "All user fields are empty.No changes",
-                editedUser,
-            });
+
+        const { name, email, old_password, new_password } = req.body;
+        const updates = {};
+
+        if (name !== undefined && name.trim()) {
+            updates.name = name.trim();
         }
-        else if (editedUser.old_password === undefined && editedUser.new_password === undefined && editedUser.name !== undefined) {
-            console.log("Line 44")
-            const updatedUserFields = { ...user._doc, ...editedUser };
-            await userModel.findByIdAndUpdate(
-                req.body.id,
-                updatedUserFields,
-                { new: true } // This is important to add.
-            );
-            return res.status(201).send({
-                success: true,
-                message: "User Name Updated Successfully",
-                editedUser,
-            });
-        }
-        else if ((editedUser.old_password !== undefined) && (editedUser.new_password === undefined)) {
-            const updatedUserFields = { ...user._doc, ...editedUser };
-            await userModel.findByIdAndUpdate(
-                req.body.id,
-                updatedUserFields,
-                { new: true } // This is important to add.
-            );
-            return res.status(201).send({
-                // Even If old password provided is wrong and if new password is not provided the profile name updates successfully
-                // on https://pro-manage-jade.vercel.app/home/settings
-                success: true,
-                message: "User Updated Successfully",
-                updatedUserFields,
-            });
-        }
-        else if ((editedUser.old_password === undefined && editedUser.new_password !== undefined)) {
-            return res.status(501).send({
-                success: false,
-                message: "Please provide old password to confirm.Profile failed to update",
-                editedUser,
-            });
-        }
-        else if ((editedUser.old_password !== undefined && editedUser.new_password !== undefined)) {
 
-            if (await bcryptjs.compare(editedUser.old_password, user.password)) {
-                if (editedUser.old_password === editedUser.new_password) {
-                    return res.status(501).send({
-                        success: false,
-                        message: "New Password is Same as Old Password. Please Provide Fresh password to update profile",
-                        editedUser,
-                    });
-                }
+        if (email !== undefined && email.trim() && email.trim() !== user.email) {
+            const normalizedEmail = email.trim();
+            const existingUser = await userModel.findOne({ email: normalizedEmail, _id: { $ne: userId } });
 
-                else {
-                    if (editedUser.new_password.length >= 8) {
-                        const salt = bcryptjs.genSaltSync(10);
-                        const hashedPassword = await bcryptjs.hash(editedUser.new_password, salt);
-                        const newEditedUser = {
-                            name: req.body.name,
-                            password: hashedPassword
-                        }
-                        const updated_user = { ...user._doc, ...newEditedUser }
-                        console.log("line 98", updated_user)
-                        await userModel.findByIdAndUpdate(req.body.id, updated_user, { new: true })
-                        await authService.logoutUserAfterPasswordChange(req, res)
-
-
-                        // router.post("/logout", authRouter.logoutController); // Not working
-
-
-                    }
-                    else {
-                        return res.status(400).send({
-                            success: false,
-                            message: "New Password should be at least 8 characters long",
-                            updated_user,
-                        });
-                    }
-                }
-            }
-            else {
-                console.log(await bcryptjs.compare(editedUser.old_password, user.password))
-                return res.status(500).send({
+            if (existingUser) {
+                return res.status(409).send({
                     success: false,
-                    message: "Old password Does not match with stored password",
-                    // updated_user,
+                    message: "Email is Already Registered",
                 });
             }
+
+            updates.email = normalizedEmail;
         }
+
+        if (new_password !== undefined && new_password) {
+            if (!old_password) {
+                return res.status(400).send({
+                    success: false,
+                    message: "Please provide old password to confirm. Profile failed to update",
+                });
+            }
+
+            const passwordMatches = await bcryptjs.compare(old_password, user.password);
+            if (!passwordMatches) {
+                return res.status(400).send({
+                    success: false,
+                    message: "Old password does not match with stored password",
+                });
+            }
+
+            if (old_password === new_password) {
+                return res.status(400).send({
+                    success: false,
+                    message: "New password is same as old password",
+                });
+            }
+
+            if (new_password.length < 8) {
+                return res.status(400).send({
+                    success: false,
+                    message: "New password should be at least 8 characters long",
+                });
+            }
+
+            const salt = bcryptjs.genSaltSync(10);
+            updates.password = await bcryptjs.hash(new_password, salt);
+        }
+
+        if (!Object.keys(updates).length) {
+            return res.status(200).send({
+                success: true,
+                message: "No profile changes provided",
+                user: { name: user.name, email: user.email },
+            });
+        }
+
+        const oldEmail = user.email;
+        const updatedUser = await userModel.findByIdAndUpdate(userId, updates, {
+            new: true,
+            runValidators: true,
+        }).select("name email");
+
+        if (updates.email) {
+            await taskModel.updateMany({ assigned_to_email: oldEmail }, { assigned_to_email: updates.email });
+            await addToBoardModel.updateMany({ email: oldEmail }, { email: updates.email });
+        }
+
+        if (updates.password) {
+            return authService.logoutUserAfterPasswordChange(req, res);
+        }
+
+        return res.status(200).send({
+            success: true,
+            message: "User profile updated successfully",
+            user: updatedUser,
+        });
     } catch (err) {
         console.log(err);
         return res.status(500).send({
@@ -128,6 +107,5 @@ const updateUserController = async (req, res) => {
         });
     }
 };
-
 
 module.exports = updateUserController;

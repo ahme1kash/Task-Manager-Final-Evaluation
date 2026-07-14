@@ -14,6 +14,7 @@ import Settings from "./Components/Settings/Settings.jsx";
 import Structure from "./Components/Structure/Structure.jsx";
 import PrivateRoutes from "./Components/Helper/PrivateRoutes.jsx";
 import LoaderComponent from "./Components/Loader/Loader.jsx";
+import PublicTask from "./Components/PublicTask/PublicTask.jsx";
 
 const LoadingWrapper = ({ router }) => {
   const [loading, setLoading] = useState(true);
@@ -34,6 +35,10 @@ const App = () => {
     {
       path: "/",
       element: <LoginSignup />,
+    },
+    {
+      path: "/task/:task_id",
+      element: <PublicTask />,
     },
     {
       element: <PrivateRoutes />,

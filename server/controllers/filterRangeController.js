@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 const taskModel = require("../models/taskModel");
+const userModel = require("../models/userModel");
 // All Queries match filter criteria as per MONGO server Time which trails by GMT- 5:30 as per Indian Standard Time (IST)
 const filterController = async (req, res) => {
     try {
-        const user_id = req.body.id;
+        const user_id = req.user.id;
+        const user = await userModel.findById(user_id);
+        const user_email = user.email;
+        const userTaskQuery = { $or: [{ "assignor_id": user_id }, { "assigned_to_email": { $eq: user_email } }] };
         let filtered_tasks;
         let filter_period = req.query.filter;
         console.log(filter_period);
@@ -16,11 +20,11 @@ const filterController = async (req, res) => {
 
             // Can't query with only matching <createdAt: new Date()> because the new Date() contains milliseconds as per the query time by user which does not match with the createdAt time for today's task because the milliseconds does not match in the document of mongo-collection, Therefore querying with hour range.
             filtered_tasks = await taskModel.find({
-                user_id: user_id,
+                ...userTaskQuery,
                 createdAt: { $gt: today_start, $lte: today_end },
             });
             const filtered_count_today = await taskModel.countDocuments({
-                user_id: user_id,
+                ...userTaskQuery,
                 createdAt: { $gt: today_start, $lte: today_end },
             })
             return res.status(200).send({
@@ -33,11 +37,11 @@ const filterController = async (req, res) => {
             let seven_days_back_date = new Date();
             seven_days_back_date.setDate(seven_days_back_date.getDate() - 7);
             filtered_tasks = await taskModel.find({
-                user_id: user_id,
+                ...userTaskQuery,
                 createdAt: { $gt: seven_days_back_date, $lte: new Date() },
             });
             const filtered_count_week = await taskModel.countDocuments({
-                user_id: user_id,
+                ...userTaskQuery,
                 createdAt: { $gt: seven_days_back_date, $lte: new Date() },
             })
             return res.status(200).send({
@@ -50,11 +54,11 @@ const filterController = async (req, res) => {
             let thirty_days_back_date = new Date();
             thirty_days_back_date.setDate(thirty_days_back_date.getDate() - 30);
             filtered_tasks = await taskModel.find({
-                user_id: user_id,
+                ...userTaskQuery,
                 createdAt: { $gt: thirty_days_back_date, $lte: new Date() },
             });
             const filtered_count_month = await taskModel.countDocuments({
-                user_id: user_id,
+                ...userTaskQuery,
                 createdAt: { $gt: thirty_days_back_date, $lte: new Date() },
             })
             return res.status(200).send({

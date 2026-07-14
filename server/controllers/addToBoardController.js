@@ -1,7 +1,23 @@
 const addToBoardModel = require("../models/addToBoardModel");
+const userModel = require("../models/userModel");
 const addToBoardUserController = async (req, res) => {
     try {
         const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).send({
+                success: false,
+                message: "Email is required",
+            });
+        }
+
+        const registeredUser = await userModel.findOne({ email });
+        if (!registeredUser) {
+            return res.status(400).send({
+                success: false,
+                message: "Person must be a registered Pro Manage user",
+            });
+        }
 
         //check user
         const existing = await addToBoardModel.findOne({ email });
@@ -37,7 +53,6 @@ const getAllUserFromBoardController = async (req, res) => {
 
         //get user
         const getAllUsers = await addToBoardModel.find();
-        console.log("Hello")
         return res.status(201).send({
             success: true,
             message: "All Users from Board fetched Successfully",

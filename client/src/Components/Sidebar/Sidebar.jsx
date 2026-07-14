@@ -12,7 +12,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <ul>
         <li>
-          <span>
+          <span className="sidebar-brand">
             <img src={codesandbox_icon} alt="codesandbox_icon" />
             Pro Manage
           </span>

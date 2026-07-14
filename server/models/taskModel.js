@@ -39,6 +39,10 @@ const taskSchema = new Schema({
         enum: ["To do", "Backlog", "Done", "In Progress"],
         required: true
     },
+    task_order: {
+        type: Number,
+        default: 0,
+    },
     task_steps: [taskStepSchema],
     assigned_to_email: {
         type: String,

@@ -1,5 +1,5 @@
-const tokenBlacklist = [];
 const userModel = require("../models/userModel");
+const tokenBlacklistModel = require("../models/tokenBlacklistModel");
 const bcryptjs = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const registerController = async (req, res) => {
@@ -98,22 +98,26 @@ const loginController = async (req, res) => {
 };
 const logoutController = async (req, res) => {
     try {
-        const token = req.headers["authorization"].split(" ")[1];
-        JWT.verify(token, process.env.JWT_SECRET, (err, decode) => {
-            if (err) {
-                return res.status(401).send({
-                    success: false,
-                    message: "Un-Authorized User or User already logged out.",
-                });
-            } else {
-                tokenBlacklist.push(token);
-                console.log(tokenBlacklist)
+        const authHeader = req.headers["authorization"];
+        const token = authHeader && authHeader.split(" ")[1];
 
-                return res.status(200).send({
-                    success: true,
-                    message: "User Logged out successfully",
-                });
-            }
+        if (!token) {
+            return res.status(401).send({
+                success: false,
+                message: "Please provide Auth Token",
+            });
+        }
+
+        const decoded = JWT.verify(token, process.env.JWT_SECRET);
+        await tokenBlacklistModel.findOneAndUpdate(
+            { token },
+            { token, expiresAt: new Date(decoded.exp * 1000) },
+            { upsert: true, setDefaultsOnInsert: true }
+        );
+
+        return res.status(200).send({
+            success: true,
+            message: "User Logged out successfully",
         });
     } catch (err) {
         console.log(err);
@@ -127,5 +131,4 @@ module.exports = {
     registerController,
     loginController,
     logoutController,
-    tokenBlacklist,
 };

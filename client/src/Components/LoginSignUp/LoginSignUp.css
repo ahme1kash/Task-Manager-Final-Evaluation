@@ -236,3 +236,62 @@
         max-width: 20%;
     }
 }
+
+@media (max-width: 385px) {
+    .welcome {
+        display: none;
+    }
+
+    .signandregister {
+        position: static;
+        max-width: 100%;
+        min-height: 100vh;
+        justify-content: center;
+        padding: 1em;
+    }
+
+    .text,
+    .inputs {
+        position: static;
+        margin: 0;
+    }
+
+    .input {
+        max-width: 100%;
+    }
+
+    .submit-container {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 386px) and (max-width: 767px) {
+    .welcome {
+        max-width: 34%;
+    }
+
+    .robo {
+        width: 28vw;
+        height: auto;
+        right: 1em;
+    }
+
+    .greet {
+        left: 1em;
+        top: 18em;
+    }
+
+    .signandregister {
+        max-width: 66%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .robo {
+        right: 4em;
+    }
+
+    .greet {
+        left: 4em;
+    }
+}

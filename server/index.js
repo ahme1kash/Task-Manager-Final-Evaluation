@@ -1,12 +1,12 @@
 const express = require("express")
+const dotenv = require("dotenv");
+dotenv.config();
 const connect = require("./config/db")
 const cors = require("cors")
 const app = express();
 const morgan = require("morgan")
 require("colors")
 const PORT = process.env.PORT || 3010;
-const dotenv = require("dotenv");
-dotenv.config();
 
 //  Middlewares
 app.use(cors());
@@ -24,9 +24,10 @@ app.use("/api/search", require("./routes/filterRangeRoutes"));
 app.use("/api/onboard", require("./routes/addToBoardRoutes"));
 
 app.listen(PORT, async () => {
-    if (await connect()) {
+    const connectionMessage = await connect();
+    if (connectionMessage) {
         console.log("Server Status👇\n".blue.bold);
-        console.log(await connect());
+        console.log(connectionMessage);
         console.log(`Server Up and Running at port ${PORT}`.yellow.bold);
     }
 });
