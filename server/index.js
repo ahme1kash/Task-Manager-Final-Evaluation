@@ -8,12 +8,30 @@ const morgan = require("morgan");
 require("colors");
 const PORT = process.env.PORT || 3010;
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
 const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "https://task-manager-final-evaluation-3.onrender.com",
-    process.env.FRONTEND_URL,
-  ].filter(Boolean),
+  origin(origin, callback) {
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    try {
+      const { hostname } = new URL(origin);
+      const isAllowedRenderOrigin = hostname.endsWith(".onrender.com");
+
+      if (allowedOrigins.includes(origin) || isAllowedRenderOrigin) {
+        return callback(null, true);
+      }
+    } catch (err) {
+      return callback(err);
+    }
+
+    return callback(new Error(`CORS blocked origin: ${origin}`));
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"],
   allowedHeaders: [
     "Content-Type",
