@@ -108,10 +108,11 @@
 .board-scroll {
     display: flex;
     gap: 1.2em;
-    overflow-x: auto;
+    overflow-x: scroll;
     padding: 0 1.5em 1.4em 1.5em;
-    scrollbar-color: #8daab5 transparent;
+    scrollbar-color: #eef5f7 transparent;
     scrollbar-width: auto;
+    scrollbar-gutter: stable;
 }
 
 .board-scroll::-webkit-scrollbar {
@@ -119,13 +120,17 @@
 }
 
 .board-scroll::-webkit-scrollbar-thumb {
-    background: #8daab5;
+    background: #eef5f7;
     border-radius: 1em;
+}
+
+.board-scroll::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .task-column {
     flex: 0 0 17.5em;
-    height: calc(100vh - 11em);
+    height: calc(100vh - 12.5em);
     min-height: 32em;
     background: #eef5f7;
     border-radius: 0.7em;
