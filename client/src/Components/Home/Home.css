@@ -974,6 +974,6 @@
 
 @media (min-width: 1200px) {
     .task-column {
-        flex-basis: 17.5em;
+        flex-basis: calc((100% - 3.6em) / 3.5);
     }
 }
