@@ -89,7 +89,7 @@ const CardModal = () => {
             Accept: "application/json",
             authorization: `Bearer ${Token}`,
           },
-        }
+        },
       );
       toast.success(" Task Submitted successfully", response, {
         position: "top-center",
@@ -207,7 +207,7 @@ const CardModal = () => {
               <div className="assignspan">
                 <input
                   type="email"
-                  placeholder="Add an assignee"
+                  placeholder="Add a assignee"
                   className="assigninput"
                   value={email}
                   onChange={assignInputHandler}

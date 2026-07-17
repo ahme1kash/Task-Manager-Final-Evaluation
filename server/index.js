@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3010;
 
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://task-manager-final-evaluation-3.onrender.com",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
@@ -20,10 +21,9 @@ const corsOptions = {
     }
 
     try {
-      const { hostname } = new URL(origin);
-      const isAllowedRenderOrigin = hostname.endsWith(".onrender.com");
+      new URL(origin);
 
-      if (allowedOrigins.includes(origin) || isAllowedRenderOrigin) {
+      if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
     } catch (err) {

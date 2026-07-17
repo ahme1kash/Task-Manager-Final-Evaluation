@@ -28,10 +28,16 @@ const LoginSignUp = () => {
   const submitForm = async (e) => {
     try {
       e.preventDefault();
-      if (activity == "Register") {
+      const payload = {
+        ...user,
+        name: user.name.trim(),
+        email: user.email.trim(),
+      };
+
+      if (activity === "Register") {
         const response = await axios.post(
           `${API_BASE_URL}/api/auth/register`,
-          user,
+          payload,
           {
             headers: {
               "Content-Type": "application/json",
@@ -43,10 +49,10 @@ const LoginSignUp = () => {
         toast.success(" User Registered Successfully", {
           position: "top-center",
         });
-      } else if (activity == "Login") {
+      } else if (activity === "Login") {
         const response = await axios.post(
           `${API_BASE_URL}/api/auth/login`,
-          user,
+          payload,
 
           {
             headers: {
@@ -65,10 +71,11 @@ const LoginSignUp = () => {
       }
     } catch (err) {
       console.log("Error encountered in subitting data", err);
-      toast.error(err.response?.data?.message || "Data failed to get submitted successfully", {
+      const status = err.response?.status;
+      const message = err.response?.data?.message || err.message || "Data failed to get submitted successfully";
+      toast.error(status ? `${status}: ${message}` : message, {
         position: "top-center",
       });
-      navigate("/");
     }
   };
   return (
@@ -161,7 +168,7 @@ const LoginSignUp = () => {
             >
               {activity === "Login" ? "Log in" : "Register"}
             </button>
-            {activity == "Register" ? (
+            {activity === "Register" ? (
               <p className="acc">Have an Account</p>
             ) : (
               <p className="acc">Have no Account yet?</p>
