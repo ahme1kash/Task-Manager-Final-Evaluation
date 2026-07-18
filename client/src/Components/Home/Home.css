@@ -34,6 +34,7 @@
 .filter-btn,
 .column-icon-btn,
 .card-menu-btn,
+.share-link-btn,
 .collapse-btn,
 .status-buttons button,
 .card-menu button,
@@ -302,6 +303,19 @@
     width: 1.8em;
     height: 1.8em;
     margin-left: 0.4em;
+}
+
+.card-top-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65em;
+}
+
+.share-link-btn {
+    color: #707070;
+    font-size: 0.66em;
+    font-weight: 650;
+    white-space: nowrap;
 }
 
 .card-menu-btn {

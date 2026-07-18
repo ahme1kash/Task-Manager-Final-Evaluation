@@ -68,8 +68,8 @@ const PublicTask = () => {
         </h2>
         <div className="public-checklist">
           {task.task_steps?.map((step, index) => (
-            <label className="public-checklist-item" key={index}>
-              <input type="checkbox" checked={Boolean(step.done)} readOnly />
+            <label className={`public-checklist-item ${step.done ? "completed" : ""}`} key={index}>
+              <input type="checkbox" checked={Boolean(step.done)} readOnly onClick={(e) => e.preventDefault()} />
               <span>{step.description}</span>
             </label>
           ))}

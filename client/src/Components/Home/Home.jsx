@@ -699,17 +699,22 @@ const Home = () => {
                             <span className="assignee-chip">{getInitials(task.assigned_to_email)}</span>
                           )}
                         </div>
-                        <button
-                          className="card-menu-btn"
-                          onClick={() =>
-                            setUiState((current) => ({
-                              ...current,
-                              openMenuId: current.openMenuId === task._id ? null : task._id,
-                            }))
-                          }
-                        >
-                          ...
-                        </button>
+                        <div className="card-top-actions">
+                          <button className="share-link-btn" onClick={() => shareTask(task)}>
+                            Share link
+                          </button>
+                          <button
+                            className="card-menu-btn"
+                            onClick={() =>
+                              setUiState((current) => ({
+                                ...current,
+                                openMenuId: current.openMenuId === task._id ? null : task._id,
+                              }))
+                            }
+                          >
+                            ...
+                          </button>
+                        </div>
                         {uiState.openMenuId === task._id && (
                           <div className="card-menu">
                             <button onClick={() => openEditTask(task)}>Edit</button>

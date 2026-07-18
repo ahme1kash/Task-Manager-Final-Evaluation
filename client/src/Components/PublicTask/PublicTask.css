@@ -96,6 +96,13 @@
     accent-color: #17a2b8;
 }
 
+.public-checklist-item.completed span {
+    color: #8b8b8b;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: #707070;
+}
+
 .public-due-date {
     display: flex;
     align-items: center;
