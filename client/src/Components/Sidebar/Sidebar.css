@@ -83,7 +83,9 @@ Link {
 .sidebar ul li {
     margin-right: 1px;
 }
-
+.logoutbtn button {
+    cursor: pointer;
+}
 /* Media Queries for Responsiveness */
 @media (max-width: 385px) {
     .sidebar {
