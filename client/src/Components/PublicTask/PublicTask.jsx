@@ -20,12 +20,18 @@ const formatDate = (date) => {
 };
 
 const PublicTask = () => {
-  const { task_id } = useParams();
+  const { task_id: routeTaskId } = useParams();
+  const task_id = routeTaskId || new URLSearchParams(window.location.search).get("task");
   const [task, setTask] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadTask = async () => {
+      if (!task_id) {
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(`${API_BASE_URL}/api/share/public/${task_id}`);
         setTask(response.data.task);

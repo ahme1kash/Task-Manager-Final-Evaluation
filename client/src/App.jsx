@@ -30,11 +30,16 @@ const LoadingWrapper = ({ router }) => {
   return loading ? <LoaderComponent /> : <RouterProvider router={router} />;
 };
 
+const LandingRoute = () => {
+  const sharedTaskId = new URLSearchParams(window.location.search).get("task");
+  return sharedTaskId ? <PublicTask /> : <LoginSignup />;
+};
+
 const App = () => {
   const route = createBrowserRouter([
     {
       path: "/",
-      element: <LoginSignup />,
+      element: <LandingRoute />,
     },
     {
       path: "/task/:task_id",

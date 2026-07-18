@@ -312,10 +312,23 @@
 }
 
 .share-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75em;
+    height: 1.75em;
     color: #707070;
-    font-size: 0.66em;
-    font-weight: 650;
-    white-space: nowrap;
+    border-radius: 50%;
+}
+
+.share-link-btn:hover {
+    background: #f1f1f1;
+}
+
+.share-link-btn svg {
+    width: 1.05em;
+    height: 1.05em;
+    fill: currentColor;
 }
 
 .card-menu-btn {

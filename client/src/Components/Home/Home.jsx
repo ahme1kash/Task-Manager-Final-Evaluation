@@ -384,7 +384,7 @@ const Home = () => {
   };
 
   const shareTask = async (task) => {
-    const url = `${window.location.origin}/task/${task._id}`;
+    const url = `${window.location.origin}/?task=${task._id}`;
     try {
       await navigator.clipboard.writeText(url);
       toast.success("Link Copied", { position: "top-center" });
@@ -700,8 +700,16 @@ const Home = () => {
                           )}
                         </div>
                         <div className="card-top-actions">
-                          <button className="share-link-btn" onClick={() => shareTask(task)}>
-                            Share link
+                          <button
+                            type="button"
+                            className="share-link-btn"
+                            onClick={() => shareTask(task)}
+                            aria-label="Copy read-only share link"
+                            title="Copy read-only share link"
+                          >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                              <path d="M18 16.1c-.8 0-1.5.3-2 .8L8.9 12.8c.1-.3.1-.5.1-.8s0-.5-.1-.8L16 7.1c.6.5 1.3.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3c0 .3 0 .5.1.8L8 9.8C7.4 9.3 6.7 9 6 9c-1.7 0-3 1.3-3 3s1.3 3 3 3c.7 0 1.4-.3 2-.8l7.1 4.2c-.1.2-.1.5-.1.7 0 1.6 1.3 2.9 3 2.9s3-1.3 3-3-1.3-2.9-3-2.9Z" />
+                            </svg>
                           </button>
                           <button
                             className="card-menu-btn"
