@@ -13,7 +13,6 @@
 .sidebar ul {
     list-style-type: none;
     padding: 0;
-
 }
 
 .sidebar-brand {
@@ -26,17 +25,13 @@
     white-space: nowrap;
 }
 
-
-
 .sidebar ul li {
-
     display: flex;
     align-items: center;
     gap: 0.8em;
     margin-bottom: 2em;
     text-decoration: none;
     white-space: nowrap;
-
 }
 
 .link {
@@ -44,22 +39,18 @@
     color: #999696;
     font-weight: 720;
     white-space: nowrap;
-
 }
-
-
 
 #navboard.active {
     color: rgb(4, 4, 4);
-
 }
 
 #navdb.active {
-    color: rgb(4, 4, 4)
+    color: rgb(4, 4, 4);
 }
 
 #navsettings.active {
-    color: rgb(4, 4, 4)
+    color: rgb(4, 4, 4);
 }
 
 /* .link:active {
@@ -83,7 +74,6 @@ Link {
     font-size: 18px;
     display: flex;
     align-items: center;
-
 }
 
 /* .sidebar ul li Link:active {
@@ -93,7 +83,6 @@ Link {
 .sidebar ul li {
     margin-right: 1px;
 }
-
 
 /* Media Queries for Responsiveness */
 @media (max-width: 385px) {
@@ -116,6 +105,7 @@ Link {
     .logoutbtn {
         position: fixed;
         bottom: 1.4em;
+        cursor: pointer;
     }
 }
 
@@ -161,7 +151,6 @@ Link {
         width: 200px;
         padding: 1.8em 1.4em;
     }
-
 }
 
 @media (min-width: 1200px) {
@@ -171,14 +160,11 @@ Link {
 }
 
 .logoutbtn {
-
-
     color: rgb(255, 0, 0);
     border: none;
     cursor: pointer;
     position: absolute;
     bottom: 2em;
-
 }
 
 @media (max-height: 400px) {
@@ -186,6 +172,5 @@ Link {
         position: fixed;
 
         /* bottom: 2em; */
-
     }
 }

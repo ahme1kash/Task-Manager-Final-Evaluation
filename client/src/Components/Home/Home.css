@@ -386,6 +386,15 @@
     accent-color: #17a2b8;
 }
 
+.checklist-item.completed span,
+.modal-checklist-item.completed input[type="text"],
+.modal-checklist-item.completed input:not([type]) {
+    color: #8b8b8b;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: #707070;
+}
+
 .task-card-footer {
     display: flex;
     align-items: center;

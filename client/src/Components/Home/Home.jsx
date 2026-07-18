@@ -751,7 +751,10 @@ const Home = () => {
                       {isExpanded && (
                         <div className="checklist-items">
                           {task.task_steps?.map((step, index) => (
-                            <label className="checklist-item" key={`${task._id}-${index}`}>
+                            <label
+                              className={`checklist-item ${step.done ? "completed" : ""}`}
+                              key={`${task._id}-${index}`}
+                            >
                               <input
                                 type="checkbox"
                                 checked={Boolean(step.done)}
@@ -870,7 +873,7 @@ const Home = () => {
             </div>
             <div className="modal-checklist-list">
               {taskForm.task_steps.map((step, index) => (
-                <div className="modal-checklist-item" key={index}>
+                <div className={`modal-checklist-item ${step.done ? "completed" : ""}`} key={index}>
                   <input
                     type="checkbox"
                     checked={Boolean(step.done)}
